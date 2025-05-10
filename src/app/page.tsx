@@ -1,95 +1,30 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+// import Image from "next/image";
+// import styles from "./page.module.css";
+import { Main, Title, Subtitle, TechStack, TechItem, CTAButton } from '../styles/HomeStyles';
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <Main>
+      <Title>
+        안녕하세요,<br />저는 <span style={{ color: '#38bdf8' }}>프론트엔드 개발자</span><br />이성운입니다.
+      </Title>
+      <Subtitle>
+        사용자 경험을 최우선으로 생각하며,<br />깔끔하고 효율적인 UI 개발을 지향합니다.<br />React, Next.js, TypeScript, Styled-Component를 주로 사용합니다.
+      </Subtitle>
+      <TechStack>
+        <TechItem>HTML</TechItem>
+        <TechItem>CSS</TechItem>
+        <TechItem>JavaScript</TechItem>
+        <TechItem>React</TechItem>
+        <TechItem>Next.js</TechItem>
+        <TechItem>TypeScript</TechItem>
+        <TechItem>Styled-Component</TechItem>
+      </TechStack>
+      <CTAButton href="/projects">
+        프로젝트 보러가기 →
+      </CTAButton>
+    </Main>
   );
 }
