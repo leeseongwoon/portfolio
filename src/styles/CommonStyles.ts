@@ -4,7 +4,7 @@ export const Main = styled.main`
   min-height: 80vh;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 4rem 1rem;
@@ -33,42 +33,22 @@ export const Subtitle = styled.p`
   }
 `;
 
-export const CardsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 2rem;
-`;
-
-export const ProjectCard = styled.div`
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 24px;
-  width: 350px;
+export const Section = styled.section`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.2s;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-  }
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 `;
 
-export const PreviewImg = styled.img`
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
+export const SectionTitle = styled.h2`
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--foreground);
 `;
 
-export const CardTitle = styled.h3`  margin: 0 0 8px 0;
-  font-size: 1.3rem;
-`;
-
-export const CardDesc = styled.p`
+export const Text = styled.p`
   font-size: 1rem;
-  text-align: center;
+  line-height: 1.6;
+  color: var(--foreground);
+  opacity: 0.9;
 `; 

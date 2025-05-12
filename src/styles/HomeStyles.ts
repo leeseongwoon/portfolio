@@ -8,8 +8,6 @@ export const Main = styled.main`
   align-items: center;
   text-align: center;
   padding: 4rem 1rem;
-  background: #000;
-  color: #fff;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -36,6 +34,7 @@ export const Subtitle = styled.p`
 `;
 
 export const TechStack = styled.div`
+  max-width: 550px;
   display: flex;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
@@ -47,7 +46,8 @@ export const TechStack = styled.div`
 `;
 
 export const TechItem = styled.span`
-  background: #222;
+  background: #333;
+  border: 1px solid #444;
   border-radius: 999px;
   padding: 0.5rem 1.25rem;
   font-size: 1rem;
@@ -60,7 +60,6 @@ export const TechItem = styled.span`
 export const CTAButton = styled.a`
   display: inline-block;
   background: #38bdf8;
-  color: #000;
   font-weight: 700;
   border-radius: 8px;
   padding: 0.75rem 2rem;
