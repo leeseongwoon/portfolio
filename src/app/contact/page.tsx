@@ -4,7 +4,7 @@ import { Main, Title, Subtitle } from '../../styles/ContactStyles';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-const ContactInfo = styled.div`
+const ContactInfo = styled.div` 
   font-size: 1.1rem;
   line-height: 2;
   max-width: 500px;
@@ -13,6 +13,7 @@ const ContactInfo = styled.div`
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
+  text-align: start;
 `;
 
 const ContactLabel = styled.span`

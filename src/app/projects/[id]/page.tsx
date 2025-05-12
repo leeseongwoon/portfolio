@@ -55,6 +55,21 @@ const projectDetails: Record<
     url?: string;
   }
 > = {
+  "wealthwise": {
+    title: "WealthWise(개발중)",
+    desc: "자산 관리 및 재무 계획 웹 애플리케이션",
+    image: "https://api.microlink.io?url=https://wealthwise-71d31.web.app&screenshot=true&meta=false&embed=screenshot.url",
+    features: [
+      "자산 및 부채 관리 대시보드",
+      "예산 계획 및 지출 추적",
+      "재무 목표 설정 및 진행 상황 모니터링",
+      "투자 포트폴리오 분석",
+      "실시간 데이터 시각화"
+    ],
+    tech: ["React", "Firebase", "Redux", "Styled-Components"],
+    content: "WealthWise는 개인 및 가계 자산을 효율적으로 관리할 수 있는 React 기반 웹 애플리케이션입니다. 직관적인 대시보드를 통해 사용자의 자산, 부채, 수입, 지출을 한눈에 파악할 수 있습니다. Firebase를 활용한 실시간 데이터베이스로 정보가 즉시 업데이트되며, 차트 및 그래프를 통해 재무 상태를 시각적으로 분석할 수 있습니다. 예산 계획 기능으로 월간/연간 지출 목표를 설정하고 추적할 수 있으며, 투자 포트폴리오 분석 도구를 통해 투자 성과를 모니터링할 수 있습니다. 모바일 환경에서도 최적화된 반응형 디자인을 제공합니다.",
+    url: "https://wealthwise-71d31.web.app/"
+  },
   "job-counseling-chatbot": {
     title: "Job Counseling Chatbot",
     desc: "AI 기반 취업 상담 챗봇 서비스",
@@ -89,7 +104,7 @@ const projectDetails: Record<
   "memo-app": {
     title: "Memo App",
     desc: "Flutter 기반 메모 관리 애플리케이션",
-    image: "/images/images.png",
+    image: "/images/memo-app.png",
     features: [
       "메모 생성, 수정, 삭제 기능",
       "폴더 생성 및 관리",
@@ -104,7 +119,7 @@ const projectDetails: Record<
   "webbler": {
     title: "Webbler",
     desc: "전문적인 웹사이트 제작 에이전시",
-    image: "/images/images.png",
+    image: "/images/webbler.png",
     features: [
       "다양한 웹디자인 템플릿 제공 (200+)",
       "맞춤형 UI 위젯 (100+)",

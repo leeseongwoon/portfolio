@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Main = styled.main`
   min-height: 80vh;
@@ -8,7 +8,10 @@ export const Main = styled.main`
   align-items: center;
   text-align: center;
   padding: 4rem 1rem;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 `;
@@ -43,7 +46,7 @@ export const CardsContainer = styled.div`
 
 export const ProjectCard = styled.div`
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   padding: 24px;
   width: 350px;
   display: flex;
@@ -52,7 +55,7 @@ export const ProjectCard = styled.div`
   transition: box-shadow 0.2s;
   cursor: pointer;
   &:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -64,11 +67,12 @@ export const PreviewImg = styled.img`
   margin-bottom: 16px;
 `;
 
-export const CardTitle = styled.h3`  margin: 0 0 8px 0;
+export const CardTitle = styled.h3`
+  margin: 0 0 8px 0;
   font-size: 1.3rem;
 `;
 
 export const CardDesc = styled.p`
   font-size: 1rem;
   text-align: center;
-`; 
+`;

@@ -45,6 +45,14 @@ type Project = {
 
 const projects: Project[] = [
   {
+    id: 'wealthwise',
+    image: 'https://api.microlink.io?url=https://wealthwise-71d31.web.app&screenshot=true&meta=false&embed=screenshot.url',
+    title: 'WealthWise',
+    desc: '자산 관리 및 재무 계획 웹 애플리케이션',
+    category: 'React',
+    url: 'https://wealthwise-71d31.web.app/'
+  },
+  {
     id: 'job-counseling-chatbot',
     image: 'https://api.microlink.io?url=https://job-counseling-chatbot.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
     title: 'Job Counseling Chatbot',
@@ -62,7 +70,7 @@ const projects: Project[] = [
   },
   {
     id: 'memo-app',
-    image: '/images/images.png',
+    image: '/images/memo-app.png',
     title: 'Memo App',
     desc: '실시간 메모 공유 웹 애플리케이션',
     category: 'Flutter',
@@ -70,7 +78,7 @@ const projects: Project[] = [
   },
   {
     id: 'webbler',
-    image: '/images/images.png',
+    image: '/images/webbler.png',
     title: 'Webbler',
     desc: '전문적인 웹사이트 제작 에이전시',
     category: '기타',

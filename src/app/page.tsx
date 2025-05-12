@@ -21,6 +21,7 @@ export default function Home() {
         <TechItem>Next.js</TechItem>
         <TechItem>TypeScript</TechItem>
         <TechItem>Styled-Component</TechItem>
+        <TechItem>Firebase</TechItem>
       </TechStack>
       <CTAButton href="/projects">
         프로젝트 보러가기 →
