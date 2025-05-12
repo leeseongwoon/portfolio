@@ -7,6 +7,7 @@ import GlobalStyle from "@/styles/GlobalStyle";
 import { ThemeProvider } from 'styled-components';
 import styled from 'styled-components';
 import StyledComponentsRegistry from '@/lib/registry';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,6 +62,7 @@ export default function RootLayout({
             <GlobalStyle />
             <Navbar />
             {children}
+            <SpeedInsights />
           </ThemeProvider>
         </StyledComponentsRegistry>
       </body>
