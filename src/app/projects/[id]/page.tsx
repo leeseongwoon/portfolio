@@ -3,42 +3,132 @@ import React from "react";
 import { Main, Title, Subtitle } from "@/styles/ProjectsStyles";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import styled from "styled-components";
+
+// 스타일 컴포넌트 추가
+const ContentSection = styled.div`
+  text-align: left;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 720px;
+  line-height: 1.7;
+`;
+
+const FeatureList = styled.ul`
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+`;
+
+const FeatureItem = styled.li`
+  margin-bottom: 0.7rem;
+`;
+
+const ProjectLink = styled.a`
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background: #38bdf8;
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: #0ea5e9;
+  }
+`;
 
 const projectDetails: Record<
   string,
-  { title: string; desc: string; content: string; image: string }
+  { 
+    title: string; 
+    desc: string; 
+    content: string; 
+    image: string;
+    features: string[];
+    tech: string[];
+    url?: string;
+  }
 > = {
-  "hello-money": {
-    title: "HELLO, MONEY",
-    desc: "지출관리 및 시각화 애플리케이션",
-    image: "/images/images.png",
-    content: `
-      • 주요 기능: 카테고리별 지출 입력, 월별 통계, 시각화 그래프 제공\n
-      • 사용 기술: React, Next.js, TypeScript, Styled-components\n
-      • 설명: 쉽고 직관적으로 지출을 관리할 수 있도록 만든 개인용 가계부 웹앱입니다.\n
-      • 특징: 반응형 UI, 데이터 시각화, 간편한 입력 UX
-    `,
+  "job-counseling-chatbot": {
+    title: "Job Counseling Chatbot",
+    desc: "AI 기반 취업 상담 챗봇 서비스",
+    image: "https://api.microlink.io?url=https://job-counseling-chatbot.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    features: [
+      "선택 기반 Q&A 시스템",
+      "단계별 대화 흐름 구현",
+      "간편한 네비게이션",
+      "직관적인 채팅 UI",
+      "관리자 페이지",
+      "RESTful API 서버"
+    ],
+    tech: ["Next.js 15", "React", "TypeScript", "Styled-Components"],
+    content: "Next.js와 React를 기반으로 구축된 웹 기반 취업 상담 챗봇 애플리케이션입니다. 사용자는 미리 정의된 질문 옵션을 선택하여 취업, 학습, 진로 관련 정보를 얻을 수 있습니다. 선택 기반 Q&A 시스템, 단계별 대화 흐름, 간편한 네비게이션, 직관적인 채팅 UI, 관리자 페이지, RESTful API 서버 등 다양한 기능을 포함합니다. 스타일 컴포넌트를 분리하여 코드 가독성과 유지보수성을 향상했습니다.",
+    url: "https://job-counseling-chatbot.vercel.app/"
   },
-  "favorite-countries": {
-    title: "FAVORITE COUNTRIES",
-    desc: "좋아하는 국가 리스트 만들기 웹사이트",
+  "tosspaments-cafe": {
+    title: "Tosspaments Cafe",
+    desc: "토스페이먼츠 결제 연동 카페 주문 서비스",
+    image: "https://api.microlink.io?url=https://tosspaments-cafe.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
+    features: [
+      "메뉴 탐색 및 카테고리별 분류",
+      "장바구니 기능 및 수량 관리",
+      "토스페이먼츠 SDK 결제 시스템",
+      "오프라인 대응 및 상태 감지",
+      "모바일 최적화 반응형 디자인"
+    ],
+    tech: ["Next.js 15", "React 19", "TypeScript", "토스페이먼츠 API"],
+    content: "Next.js 15와 토스페이먼츠 결제 API를 활용한 모바일 최적화 카페 주문 애플리케이션입니다. 사용자는 메뉴를 카테고리별로 탐색하고, 장바구니에 상품을 추가한 후 토스페이먼츠를 통해 간편하게 결제할 수 있습니다. 모바일 환경에 최적화된 반응형 디자인을 적용했으며, 터치 친화적 인터페이스로 직관적인 사용이 가능합니다. 네트워크 연결 상태 감지 및 재연결 시 자동 처리 기능도 구현되어 있어 사용자 경험을 향상시켰습니다. React Hooks와 LocalStorage를 활용한 상태 관리 시스템을 갖추고 있습니다.",
+    url: "https://tosspaments-cafe.vercel.app/"
+  },
+  "memo-app": {
+    title: "Memo App",
+    desc: "Flutter 기반 메모 관리 애플리케이션",
     image: "/images/images.png",
-    content: `
-      • 주요 기능: 국가 검색, 즐겨찾기 추가/삭제, 국가별 정보 제공\n
-      • 사용 기술: React, Next.js, TypeScript, Styled-components\n
-      • 설명: 세계 여러 나라의 정보를 한눈에 보고, 내가 좋아하는 나라를 리스트로 관리할 수 있는 웹사이트입니다.\n
-      • 특징: 깔끔한 UI, 빠른 검색, 국가별 상세 정보
-    `,
+    features: [
+      "메모 생성, 수정, 삭제 기능",
+      "폴더 생성 및 관리",
+      "메모 폴더 간 이동",
+      "메모 색상 변경",
+      "메모 검색 및 자동 저장"
+    ],
+    tech: ["Flutter", "Dart", "SQLite", "Provider", "Flutter Staggered Grid View"],
+    content: "아기자기한 UI를 가진 Flutter 기반 메모 애플리케이션입니다. 메모를 폴더별로 관리하고, 색상 변경과 검색 기능을 제공합니다. SQLite 데이터베이스를 활용해 메모와 폴더 데이터를 로컬에 저장하며, Provider 패턴으로 상태 관리를 구현했습니다. 메모 생성, 수정, 삭제 기능 외에도 폴더 관리, 메모 색상 변경, 검색, 자동 저장 기능을 제공합니다. Flutter의 Staggered Grid View를 활용해 다양한 크기의 메모 카드를 표시하며, 메모 내용에 따라 동적으로 카드 크기가 조절됩니다. 날짜 포맷 유틸리티를 통해 상대적 시간 표시(오늘, 어제, n일 전 등)를 제공합니다.",
+    url: "https://memo-app-bfad2.web.app/"
+  },
+  "webbler": {
+    title: "Webbler",
+    desc: "전문적인 웹사이트 제작 에이전시",
+    image: "/images/images.png",
+    features: [
+      "다양한 웹디자인 템플릿 제공 (200+)",
+      "맞춤형 UI 위젯 (100+)",
+      "기획부터 디자인, 개발까지 통합 서비스",
+      "5단계 웹사이트 제작 프로세스",
+      "전략적 콘텐츠 설계 및 UI 구현"
+    ],
+    tech: ["HTML5/CSS3", "JavaScript", "PHP", "UI/UX 디자인"],
+    content: "  webbler는 '싸고, 빠르고, 아름답게' 웹사이트를 제작하는 디지털 에이전시입니다. 200개 이상의 웹디자인 템플릿과 100개 이상의 맞춤 UI 위젯을 보유하고 있으며, 기획부터 디자인, 개발까지 5단계 과정을 통해 전문적인 웹사이트를 제작합니다. webbler는 단순히 노코드 툴이 아닌, 목적에 맞게 콘텐츠를 전략적으로 설계하고 편리한 사용성을 고려하여 웹사이트를 개발하는 전문 에이전시입니다. 기본 제작 비용은 200만원부터 시작하며, 기획자, 디자이너, 개발자가 의뢰인과 함께 소통하며 웹사이트를 만드는 서비스를 제공합니다.",
+    url: "http://df00.dothome.co.kr/webbler/"
   },
 };
 
 export default function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
-  const project = projectDetails[id];  if (!project) return notFound();
+  const project = projectDetails[id];
+  
+  if (!project) return notFound();
+  
   return (
     <Main>
       <Title>{project.title}</Title>
       <Subtitle>{project.desc}</Subtitle>
+      
       <Image
         src={project.image}
         alt={project.title}
@@ -53,16 +143,31 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
           margin: '2rem 0',
         }}
       />
-      <pre
-        style={{
-          textAlign: "left",
-          background: "#333",
-          borderRadius: 8,
-          fontSize: "1.05rem",
-        }}
-      >
-        {project.content}
-      </pre>
+      
+      <ContentSection>
+        <h3>프로젝트 소개</h3>
+        <p style={{marginBottom:'1rem', textIndent: '0.5em'}}>{project.content}</p>
+        
+        <h3>주요 기능</h3>
+        <FeatureList>
+          {project.features.map((feature, index) => (
+            <FeatureItem key={index}>{feature}</FeatureItem>
+          ))}
+        </FeatureList>
+        
+        <h3>사용 기술</h3>
+        <FeatureList>
+          {project.tech.map((tech, index) => (
+            <FeatureItem key={index}>{tech}</FeatureItem>
+          ))}
+        </FeatureList>
+        
+        {project.url && (
+          <ProjectLink href={project.url} target="_blank" rel="noopener noreferrer">
+            프로젝트 보러가기 →
+          </ProjectLink>
+        )}
+      </ContentSection>
     </Main>
   );
 }

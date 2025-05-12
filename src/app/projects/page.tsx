@@ -5,13 +5,12 @@ import {
   Title,
   CardsContainer,
   ProjectCard,
-  PreviewImg,
   CardTitle,
   CardDesc
 } from '@/styles/ProjectsStyles';
-import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Image from 'next/image';
 
 const CategoryTabs = styled.div`
   display: flex;
@@ -34,25 +33,52 @@ const CategoryTab = styled.button<{ $active: boolean }>`
   }
 `;
 
-const projects = [
+// 프로젝트 타입 정의
+type Project = {
+  id: string;
+  image: string;
+  title: string;
+  desc: string;
+  category: string;
+  url: string;
+};
+
+const projects: Project[] = [
   {
-    id: 'hello-money',
-    image: '/images/images.png',
-    title: 'HELLO, MONEY',
-    desc: '지출관리 및 시각화 애플리케이션',
-    category: 'React'
+    id: 'job-counseling-chatbot',
+    image: 'https://api.microlink.io?url=https://job-counseling-chatbot.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    title: 'Job Counseling Chatbot',
+    desc: 'AI 기반 취업 상담 챗봇 서비스',
+    category: 'Next.js',
+    url: 'https://job-counseling-chatbot.vercel.app/'
   },
   {
-    id: 'favorite-countries',
-    image: '/images/images.png',
-    title: 'FAVORITE COUNTRIES',
-    desc: '좋아하는 국가 리스트 만들기 웹사이트',
-    category: 'Next.js'
+    id: 'tosspaments-cafe',
+    image: 'https://api.microlink.io?url=https://tosspaments-cafe.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    title: 'Tosspaments Cafe',
+    desc: '토스페이먼츠 결제 연동 카페 주문 서비스',
+    category: 'Next.js',
+    url: 'https://tosspaments-cafe.vercel.app/'
   },
+  {
+    id: 'memo-app',
+    image: '/images/images.png',
+    title: 'Memo App',
+    desc: '실시간 메모 공유 웹 애플리케이션',
+    category: 'Flutter',
+    url: 'https://memo-app-bfad2.web.app/'
+  },
+  {
+    id: 'webbler',
+    image: '/images/images.png',
+    title: 'Webbler',
+    desc: '전문적인 웹사이트 제작 에이전시',
+    category: '기타',
+    url: 'http://df00.dothome.co.kr/webbler/'
+  }
 ];
 
 export default function Projects() {
-  const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
   
@@ -60,8 +86,10 @@ export default function Projects() {
     setIsClient(true);
   }, []);
   
-  const handleProjectClick = (id: string) => {
-    router.push(`/projects/${id}`);
+  const handleProjectClick = (project: Project) => {
+    if (isClient) {
+      window.location.href = `/projects/${project.id}`;
+    }
   };
   
   const categories = ['All', 'React', 'Next.js', 'Flutter', '기타'];
@@ -89,9 +117,23 @@ export default function Projects() {
         {filteredProjects.map((project) => (
           <ProjectCard 
             key={project.id} 
-            onClick={() => isClient && handleProjectClick(project.id)}
+            onClick={() => handleProjectClick(project)}
           >
-            <PreviewImg src={project.image} alt={project.title} />
+            <div style={{ width: '100%', position: 'relative', overflow: 'hidden', borderRadius: '8px', backgroundColor: '#f0f0f0' }}>
+              <Image 
+                src={project.image} 
+                alt={project.title}
+                width={350}
+                height={180}
+                style={{ 
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  objectPosition: 'center'
+                }}
+                priority
+              />
+            </div>
             <CardTitle>{project.title}</CardTitle>
             <CardDesc>{project.desc}</CardDesc>
             <CategoryBadge>{project.category}</CategoryBadge>
@@ -110,4 +152,4 @@ const CategoryBadge = styled.span`
   border-radius: 12px;
   margin-top: 0.7rem;
   display: inline-block;
-`; 
+`;
