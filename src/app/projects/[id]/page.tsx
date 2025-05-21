@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Main, Title, Subtitle } from "@/styles/ProjectsStyles";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -40,6 +40,47 @@ const ProjectLink = styled.a`
   
   &:hover {
     background: #0ea5e9;
+  }
+`;
+
+// 모달 컴포넌트 추가
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+`;
+
+const ModalContent = styled.div`
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+`;
+
+const ModalCloseButton = styled.button`
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+`;
+
+const ProjectImageWrapper = styled.div`
+  cursor: pointer;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.02);
   }
 `;
 
@@ -136,28 +177,56 @@ const projectDetails: Record<
 export default function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = React.use(params);
   const project = projectDetails[id];
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   
   if (!project) return notFound();
+  
+  const openImageModal = () => setIsImageModalOpen(true);
+  const closeImageModal = () => setIsImageModalOpen(false);
   
   return (
     <Main>
       <Title>{project.title}</Title>
       <Subtitle>{project.desc}</Subtitle>
       
-      <Image
-        src={project.image}
-        alt={project.title}
-        width={500}
-        height={300}
-        priority
-        style={{
-          width: '100%',
-          maxWidth: '500px',
-          height: 'auto',
-          borderRadius: '12px',
-          margin: '2rem 0',
-        }}
-      />
+      <ProjectImageWrapper onClick={openImageModal}>
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={500}
+          height={300}
+          priority
+          style={{
+            width: '100%',
+            maxWidth: '500px',
+            height: 'auto',
+            borderRadius: '12px',
+            margin: '2rem 0',
+          }}
+        />
+      </ProjectImageWrapper>
+      
+      {isImageModalOpen && (
+        <ModalOverlay onClick={closeImageModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalCloseButton onClick={closeImageModal}>✕</ModalCloseButton>
+            <Image
+              src={project.image}
+              alt={project.title}
+              width={1000}
+              height={600}
+              priority
+              style={{
+                width: 'auto',
+                height: 'auto',
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                borderRadius: '8px',
+              }}
+            />
+          </ModalContent>
+        </ModalOverlay>
+      )}
       
       <ContentSection>
         <h3>프로젝트 소개</h3>

@@ -3,6 +3,7 @@
 import { Main, Title, Subtitle } from '../../styles/ContactStyles';
 import styled from 'styled-components';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const ContactInfo = styled.div` 
   font-size: 1.1rem;
@@ -44,7 +45,54 @@ const KakaoProfile = styled.div`
   width: 100%;
 `;
 
+// 모달 컴포넌트 추가
+const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+`;
+
+const ModalContent = styled.div`
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+`;
+
+const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: black;
+  font-size: 24px;
+  cursor: pointer;
+`;
+
+const ProfileImageWrapper = styled.div`
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: inline-block;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
 export default function Contact() {
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  
+  const openImageModal = () => setIsImageModalOpen(true);
+  const closeImageModal = () => setIsImageModalOpen(false);
+  
   return (
     <Main>
       <Title>Contact</Title>
@@ -72,22 +120,46 @@ export default function Contact() {
       <KakaoSection>
         <KakaoProfile>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Image 
-              src="/images/KakaoTalk_Profile.png" 
-              alt="카카오톡 프로필" 
-              width={200}
-              height={0}
-              style={{ 
-                width: 'auto',
-                height: 'auto',
-                maxWidth: '200px',
-                borderRadius: '12px' 
-              }}
-              priority
-            />
+            <ProfileImageWrapper onClick={openImageModal}>
+              <Image 
+                src="/images/KakaoTalk_Profile.png" 
+                alt="카카오톡 프로필" 
+                width={200}
+                height={0}
+                style={{ 
+                  width: 'auto',
+                  height: 'auto',
+                  maxWidth: '200px',
+                  borderRadius: '12px' 
+                }}
+                priority
+              />
+            </ProfileImageWrapper>
           </div>
         </KakaoProfile>
       </KakaoSection>
+      
+      {isImageModalOpen && (
+        <ModalOverlay onClick={closeImageModal}>
+          <ModalContent onClick={(e) => e.stopPropagation()}>
+            <ModalCloseButton onClick={closeImageModal}>✕</ModalCloseButton>
+            <Image
+              src="/images/KakaoTalk_Profile.png"
+              alt="카카오톡 프로필"
+              width={800}
+              height={0}
+              style={{
+                width: 'auto',
+                height: 'auto',
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                borderRadius: '12px',
+              }}
+              priority
+            />
+          </ModalContent>
+        </ModalOverlay>
+      )}
     </Main>
   );
 } 

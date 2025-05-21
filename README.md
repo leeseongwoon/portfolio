@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 포트폴리오 웹사이트
 
-## Getting Started
+Next.js와 React를 사용하여 제작된 개인 포트폴리오 웹사이트입니다.
 
-First, run the development server:
+## 기술 스택
 
+- **프레임워크**: Next.js 15.3.2
+- **언어**: TypeScript
+- **스타일링**: Styled Components
+- **분석 도구**: 
+  - Vercel Analytics
+  - Vercel Speed Insights
+
+## 시작하기
+
+### 필수 조건
+
+- Node.js (최신 LTS 버전 권장)
+- npm
+
+### 설치
+
+1. 저장소를 클론합니다:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [repository-url]
+cd portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. 의존성을 설치합니다:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. 개발 서버를 실행합니다:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. 브라우저에서 [http://localhost:3000](http://localhost:3000)으로 접속하여 확인합니다.
 
-## Learn More
+## 사용 가능한 스크립트
 
-To learn more about Next.js, take a look at the following resources:
+- `npm run dev`: 개발 서버 실행 (Turbopack 사용)
+- `npm run build`: 프로덕션용 빌드 생성
+- `npm run start`: 프로덕션 모드로 서버 실행
+- `npm run lint`: ESLint를 사용한 코드 검사
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 프로젝트 구조
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+portfolio/
+├── src/              # 소스 코드
+├── public/           # 정적 파일
+├── .next/            # Next.js 빌드 파일
+├── node_modules/     # 의존성 패키지
+└── package.json      # 프로젝트 설정 및 의존성
+```
 
-## Deploy on Vercel
+## 라이선스
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+이 프로젝트는 MIT 라이선스 하에 있습니다.
