@@ -33,49 +33,12 @@ const CategoryTab = styled.button<{ $active: boolean }>`
   }
 `;
 
-// 모달 컴포넌트 추가
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  cursor: pointer;
-`;
-
-const ModalContent = styled.div`
-  max-width: 90%;
-  max-height: 90%;
-  position: relative;
-`;
-
-const ModalCloseButton = styled.button`
-  position: absolute;
-  top: -40px;
-  right: 0;
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-`;
-
 const ImageContainer = styled.div`
-  cursor: pointer;
   width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
   background-color: #f0f0f0;
-  
-  &:hover img {
-    transform: scale(1.05);
-  }
 `;
 
 // 프로젝트 타입 정의
@@ -134,8 +97,6 @@ const projects: Project[] = [
 export default function Projects() {
   const [isClient, setIsClient] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  const [selectedTitle, setSelectedTitle] = useState<string>('');
   
   useEffect(() => {
     setIsClient(true);
@@ -145,16 +106,6 @@ export default function Projects() {
     if (isClient) {
       window.location.href = `/projects/${project.id}`;
     }
-  };
-  
-  const openImageModal = (e: React.MouseEvent, image: string, title: string) => {
-    e.stopPropagation();
-    setSelectedImage(image);
-    setSelectedTitle(title);
-  };
-  
-  const closeImageModal = () => {
-    setSelectedImage(null);
   };
   
   const categories = ['All', 'React', 'Next.js', 'Flutter', '기타'];
@@ -184,7 +135,7 @@ export default function Projects() {
             key={project.id} 
             onClick={() => handleProjectClick(project)}
           >
-            <ImageContainer onClick={(e) => openImageModal(e, project.image, project.title)}>
+            <ImageContainer>
               <Image 
                 src={project.image} 
                 alt={project.title}
@@ -194,8 +145,7 @@ export default function Projects() {
                   width: '100%',
                   height: 'auto',
                   objectFit: 'cover',
-                  objectPosition: 'center',
-                  transition: 'transform 0.3s ease'
+                  objectPosition: 'center'
                 }}
                 priority
               />
@@ -206,28 +156,6 @@ export default function Projects() {
           </ProjectCard>
         ))}
       </CardsContainer>
-      
-      {selectedImage && (
-        <ModalOverlay onClick={closeImageModal}>
-          <ModalContent onClick={(e) => e.stopPropagation()}>
-            <ModalCloseButton onClick={closeImageModal}>✕</ModalCloseButton>
-            <Image
-              src={selectedImage}
-              alt={selectedTitle}
-              width={1000}
-              height={600}
-              priority
-              style={{
-                width: 'auto',
-                height: 'auto',
-                maxWidth: '100%',
-                maxHeight: '90vh',
-                borderRadius: '8px',
-              }}
-            />
-          </ModalContent>
-        </ModalOverlay>
-      )}
     </Main>
   );
 }
