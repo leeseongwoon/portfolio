@@ -48,7 +48,7 @@ export default function RootLayout({
       <head>
         <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
         <meta name="description" content="React, Next.js, TypeScript를 주로 사용하는 프론트엔드 개발자 이성운의 포트폴리오입니다." />
-        <meta name="keywords" content="이성운, 포트폴리오, 프론트엔드 개발자, React, Next.js, TypeScript, 웹 개발자" />
+        <meta name="keywords" content="이성운, 포트폴리오, 프론트엔드 개발자, 이성운 포트폴리오, 이성운 프론트엔드, React, Next.js, TypeScript, 웹 개발자" />
         <meta name="author" content="이성운" />
         <meta name="robots" content="index, follow" />
         
