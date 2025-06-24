@@ -14,8 +14,18 @@ import Image from 'next/image';
 
 const CategoryTabs = styled.div`
   display: flex;
+  justify-content: space-around;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
+  
+  @media (max-width: 450px) {
+    gap: 0.5rem;
+    
+    > * {
+      flex: 0 0 30%;
+    }
+  }
 `;
 
 const CategoryTab = styled.button<{ $active: boolean }>`

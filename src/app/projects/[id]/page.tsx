@@ -47,6 +47,12 @@ const ProjectImageWrapper = styled.div`
   width: 100%;
   max-width: 500px;
   margin: 2rem 0;
+  cursor: pointer;
+  transition: transform 0.2s;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const projectDetails: Record<
@@ -150,7 +156,7 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
       <Title>{project.title}</Title>
       <Subtitle>{project.desc}</Subtitle>
       
-      <ProjectImageWrapper>
+      <ProjectImageWrapper onClick={() => project.url && window.open(project.url, '_blank')}>
         <Image
           src={project.image}
           alt={project.title}

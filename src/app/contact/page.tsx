@@ -110,6 +110,12 @@ export default function Contact() {
           </ContactLink>
         </ContactItem>
         <ContactItem>
+          <ContactLabel>LinkedIn:</ContactLabel>
+          <ContactLink href="https://www.linkedin.com/in/%EC%84%B1%EC%9A%B4-%EC%9D%B4-468387355/" target="_blank" rel="noopener noreferrer">
+          www.linkedin.com/in/이성운
+          </ContactLink>
+        </ContactItem>
+        <ContactItem>
           <ContactLabel>Kakao:</ContactLabel>
           <ContactLink href="https://open.kakao.com/o/sw0_0mm" target="_blank" rel="noopener noreferrer">
             sw0_0mm
