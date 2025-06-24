@@ -11,6 +11,7 @@ import {
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const CategoryTabs = styled.div`
   display: flex;
@@ -110,6 +111,8 @@ export default function Projects() {
   
   useEffect(() => {
     setIsClient(true);
+    // 페이지 타이틀 설정
+    document.title = "프로젝트 - 이성운 포트폴리오";
   }, []);
   
   const handleProjectClick = (project: Project) => {
@@ -127,6 +130,9 @@ export default function Projects() {
   
   return (
     <Main>
+      <Head>
+        <title>프로젝트 - 이성운 포트폴리오</title>
+      </Head>
       <Title>Projects</Title>
       <CategoryTabs>
         {categories.map(category => (

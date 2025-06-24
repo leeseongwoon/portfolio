@@ -3,10 +3,20 @@
 // import Image from "next/image";
 // import styles from "./page.module.css";
 import { Main, Title, Subtitle, TechStack, TechItem, CTAButton } from '../styles/HomeStyles';
+import { useEffect } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
+  useEffect(() => {
+    // 페이지 타이틀 설정
+    document.title = "이성운 - 프론트엔드 개발자 포트폴리오";
+  }, []);
+
   return (
     <Main>
+      <Head>
+        <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
+      </Head>
       <Title>
         안녕하세요,<br />저는 <span style={{ color: '#38bdf8' }}>프론트엔드 개발자</span><br />이성운입니다.
       </Title>

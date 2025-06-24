@@ -3,7 +3,8 @@
 import { Main, Title, Subtitle } from '../../styles/ContactStyles';
 import styled from 'styled-components';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 const ContactInfo = styled.div` 
   font-size: 1.1rem;
@@ -90,11 +91,19 @@ const ProfileImageWrapper = styled.div`
 export default function Contact() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   
+  useEffect(() => {
+    // 페이지 타이틀 설정
+    document.title = "연락처 - 이성운 포트폴리오";
+  }, []);
+  
   const openImageModal = () => setIsImageModalOpen(true);
   const closeImageModal = () => setIsImageModalOpen(false);
   
   return (
     <Main>
+      <Head>
+        <title>연락처 - 이성운 포트폴리오</title>
+      </Head>
       <Title>Contact</Title>
       <Subtitle>아래 연락처로 문의해주세요.</Subtitle>
       
