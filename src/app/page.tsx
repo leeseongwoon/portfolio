@@ -128,7 +128,7 @@ export default function Home() {
       
       {/* 배경 파티클 효과 */}
       <ParticleContainer>
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <Particle
             key={i}
             $delay={Math.random() * 6}
