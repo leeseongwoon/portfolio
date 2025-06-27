@@ -26,7 +26,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
   font-size: 1.25rem;
   max-width: 600px;
-  margin-bottom: 2.5rem;
+  margin-bottom: .5rem;
   color: #ccc;
   @media (max-width: 767px) {
     font-size: 1rem;

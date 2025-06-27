@@ -59,7 +59,6 @@ const AnimatedContactItem = styled.div`
   padding: 1rem;
   border-radius: 12px;
   transition: all 0.3s ease;
-  margin-bottom: 1rem;
   
   &:hover {
     background: rgba(56, 189, 248, 0.1);
