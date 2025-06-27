@@ -26,6 +26,48 @@ const NavStyle = styled.nav`
   border-bottom: 1px solid #f8f9fa;
   font-size: 1.2rem;
   font-weight: 700;
+  background: #222222;
+  
+  a {
+    text-decoration: none;
+    color: #f8f9fa;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    &:hover {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #38bdf8;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    
+    &:hover::before {
+      width: 100%;
+    }
+    
+    &.active {
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      
+      &::before {
+        width: 100%;
+      }
+    }
+  }
 `;
 
 function Navbar() {
