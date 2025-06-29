@@ -54,10 +54,11 @@ const AnimatedCategoryTabs = styled.div`
   animation: ${slideIn} 0.8s ease-out 0.3s both;
   
   @media (max-width: 450px) {
+    justify-content: center;
     gap: 0.5rem;
     
     > * {
-      flex: 0 0 calc(33.333% - 0.33rem);
+      flex: 0 0 30%;
     }
   }
 `;
