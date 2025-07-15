@@ -115,7 +115,7 @@ export default function Home() {
   
   useEffect(() => {
     setIsClient(true);
-    document.title = "이성운 - 프론트엔드 개발자 포트폴리오";
+    document.title = "이성운 - 웹 개발자 포트폴리오";
   }, []);
 
   if (!isClient) return null;
@@ -123,7 +123,7 @@ export default function Home() {
   return (
     <Main>
       <Head>
-        <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
+        <title>이성운 - 웹 개발자 포트폴리오</title>
       </Head>
       
       {/* 배경 파티클 효과 */}
