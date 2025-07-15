@@ -142,7 +142,7 @@ export default function Home() {
       
       <AnimatedTitle>
         안녕하세요,<br />
-        저는 <span style={{ color: '#38bdf8' }}>프론트엔드 개발자</span><br />
+        저는 <span style={{ color: '#38bdf8' }}>웹개발자</span><br />
         이성운입니다.
       </AnimatedTitle>
       

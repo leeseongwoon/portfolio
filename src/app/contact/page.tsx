@@ -214,6 +214,12 @@ export default function Contact() {
           </AnimatedContactLink>
         </AnimatedContactItem>
         <AnimatedContactItem>
+          <AnimatedContactLabel>LinkedIn:</AnimatedContactLabel>
+          <AnimatedContactLink href="https://www.linkedin.com/in/%EC%84%B1%EC%9A%B4-%EC%9D%B4-468387355/" target="_blank" rel="noopener noreferrer">
+            Seongwoon Lee
+          </AnimatedContactLink>
+        </AnimatedContactItem>
+        <AnimatedContactItem>
           <AnimatedContactLabel>Kakao:</AnimatedContactLabel>
           <AnimatedContactLink href="https://open.kakao.com/o/sw0_0mm" target="_blank" rel="noopener noreferrer">
             sw0_0mm
