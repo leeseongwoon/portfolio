@@ -91,7 +91,7 @@ export default function RootLayout({
         <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
         <meta
           name="description"
-          content="React, Next.js, TypeScript를 주로 사용하는 프론트엔드 개발자 이성운의 포트폴리오입니다."
+          content="React, Next.js, TypeScript를 주로 사용하는 웹 개발자 이성운의 포트폴리오입니다."
         />
         <meta
           name="keywords"
@@ -103,7 +103,7 @@ export default function RootLayout({
         {/* Open Graph 태그 */}
         <meta
           property="og:title"
-          content="이성운 - 프론트엔드 개발자 포트폴리오"
+          content="이성운 - 웹 개발자 포트폴리오"
         />
         <meta
           property="og:description"
@@ -167,7 +167,6 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
           rel="stylesheet"
         />
-        <link rel="icon" href="/pfLogo.ico" sizes="any" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <StyledComponentsRegistry>
