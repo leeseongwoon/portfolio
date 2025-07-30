@@ -131,6 +131,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <link rel="canonical" href="https://your-domain.com" />
+        <meta name="naver-site-verification" content="7696abbf7828e9d61cc324117172e6908cae0e8b" />
 
         {/* 구조화된 데이터 (JSON-LD) */}
         <script
