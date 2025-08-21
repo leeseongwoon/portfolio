@@ -89,26 +89,7 @@ const AnimatedCTAButton = styled(CTAButton)`
   }
 `;
 
-const ParticleContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: -1;
-`;
 
-const Particle = styled.div<{ $delay: number }>`
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: #38bdf8;
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: ${float} 6s ease-in-out infinite;
-  animation-delay: ${props => props.$delay}s;
-`;
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -125,20 +106,7 @@ export default function Home() {
       <Head>
         <title>이성운 - 웹 개발자 포트폴리오</title>
       </Head>
-      
-      {/* 배경 파티클 효과 */}
-      <ParticleContainer>
-        {[...Array(30)].map((_, i) => (
-          <Particle
-            key={i}
-            $delay={Math.random() * 6}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </ParticleContainer>
+
       
       <AnimatedTitle>
         안녕하세요,<br />
