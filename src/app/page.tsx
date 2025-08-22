@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useEffect, useState, useRef } from 'react';
-import Head from 'next/head';
-import styled, { keyframes } from 'styled-components';
-import PageLayout from '../components/PageLayout';
+import { useEffect, useState, useRef } from "react";
+import Head from "next/head";
+import styled, { keyframes } from "styled-components";
+import PageLayout from "../components/PageLayout";
 
 // 애니메이션 키프레임들
 const fadeInUp = keyframes`
@@ -16,8 +16,6 @@ const fadeInUp = keyframes`
     transform: translateY(0);
   }
 `;
-
-
 
 const typing = keyframes`
   from { width: 0; }
@@ -83,8 +81,9 @@ const InteractiveCards = styled.div`
 const RotatingCard = styled.div<{ $rotation: number }>`
   width: 100%;
   height: 350px;
-  background: linear-gradient(135deg, 
-    rgba(56, 189, 248, 0.08), 
+  background: linear-gradient(
+    135deg,
+    rgba(56, 189, 248, 0.08),
     rgba(14, 165, 233, 0.04),
     rgba(6, 182, 212, 0.06)
   );
@@ -96,19 +95,21 @@ const RotatingCard = styled.div<{ $rotation: number }>`
   cursor: pointer;
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  transform: rotateY(${props => props.$rotation}deg) rotateX(${props => props.$rotation * 0.05}deg);
+  transform: rotateY(${(props) => props.$rotation}deg)
+    rotateX(${(props) => props.$rotation * 0.05}deg);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(20px);
   animation: ${glow} 4s ease-in-out infinite;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: 30px;
-    background: linear-gradient(135deg, 
-      rgba(56, 189, 248, 0.1), 
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.1),
       rgba(14, 165, 233, 0.05),
       rgba(6, 182, 212, 0.08)
     );
@@ -117,13 +118,13 @@ const RotatingCard = styled.div<{ $rotation: number }>`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border-radius: 30px;
     background: radial-gradient(
-      circle at 50% 0%, 
-      rgba(56, 189, 248, 0.15), 
+      circle at 50% 0%,
+      rgba(56, 189, 248, 0.15),
       transparent 70%
     );
     opacity: 0;
@@ -131,9 +132,11 @@ const RotatingCard = styled.div<{ $rotation: number }>`
   }
 
   &:hover {
-    transform: rotateY(${props => props.$rotation + 20}deg) rotateX(${props => props.$rotation * 0.05 + 8}deg) scale(1.08);
-    background: linear-gradient(135deg, 
-      rgba(56, 189, 248, 0.15), 
+    transform: rotateY(${(props) => props.$rotation + 20}deg)
+      rotateX(${(props) => props.$rotation * 0.05 + 8}deg) scale(1.08);
+    background: linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.15),
       rgba(14, 165, 233, 0.08),
       rgba(6, 182, 212, 0.12)
     );
@@ -158,11 +161,16 @@ const MouseTracker = styled.div<{ $x: number; $y: number }>`
   position: fixed;
   width: 30px;
   height: 30px;
-  background: radial-gradient(circle, rgba(56, 189, 248, 0.6), rgba(56, 189, 248, 0.2), transparent);
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.6),
+    rgba(56, 189, 248, 0.2),
+    transparent
+  );
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(${props => props.$x}px, ${props => props.$y}px);
+  transform: translate(${(props) => props.$x}px, ${(props) => props.$y}px);
   transition: transform 0.15s ease;
   mix-blend-mode: screen;
   filter: blur(1px);
@@ -182,8 +190,6 @@ const TypingText = styled.div`
   animation-fill-mode: forwards;
   text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 `;
-
-
 
 // 카드 제목 (보더 없이 그라데이션)
 const CardTitle = styled.h3`
@@ -212,6 +218,17 @@ const CardDescription = styled.p`
 // 애니메이션 컴포넌트들
 const AnimatedSubtitle = styled(HomeSubtitle)`
   animation: ${fadeInUp} 1.5s ease-out 0.3s both;
+  font-size: 2rem;
+  font-weight: 700;
+
+  span {
+    display: inline-flex;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #38bdf8;
+    border-right: 3px solid #38bdf8;
+    animation: ${typing} 3s steps(20, end), ${blink} 1s step-end infinite;
+  }
 `;
 
 const AnimatedInteractiveCards = styled(InteractiveCards)`
@@ -220,11 +237,11 @@ const AnimatedInteractiveCards = styled(InteractiveCards)`
 
 const AnimatedRotatingCard = styled(RotatingCard)`
   animation: ${fadeInUp} 1.5s ease-out 1s both;
-  
+
   &:nth-child(2) {
     animation-delay: 1.3s;
   }
-  
+
   &:nth-child(3) {
     animation-delay: 1.6s;
   }
@@ -242,7 +259,7 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cardRotations, setCardRotations] = useState([0, 0, 0]);
   const cardsRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     setIsClient(true);
     document.title = "이성운 - 웹 개발자 포트폴리오";
@@ -258,9 +275,10 @@ export default function Home() {
         const cards = cardsRef.current.children;
         Array.from(cards).forEach((card, index) => {
           const rect = card.getBoundingClientRect();
-          const scrollProgress = (window.innerHeight - rect.top) / window.innerHeight;
+          const scrollProgress =
+            (window.innerHeight - rect.top) / window.innerHeight;
           if (scrollProgress > 0 && scrollProgress < 1) {
-            setCardRotations(prev => {
+            setCardRotations((prev) => {
               const newRotations = [...prev];
               newRotations[index] = scrollProgress * 360;
               return newRotations;
@@ -270,12 +288,12 @@ export default function Home() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -291,19 +309,14 @@ export default function Home() {
       <MouseTracker $x={mousePosition.x} $y={mousePosition.y} />
 
       <AnimatedSubtitle>
-        웹 개발자로서 사용자 경험을 최우선으로 생각하며,<br />
-        깔끔하고 효율적인 UI 개발을 지향합니다.<br />
-        <span style={{ 
-          background: 'linear-gradient(135deg, #38bdf8, #0ea5e9)',
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          fontWeight: '600'
-        }}>
-          창의적인 인터랙션과 혁신적인 솔루션을 제공합니다.
-        </span>
+        사용자의 즐거운 경험을 설계하는
+        <span>웹 개발자 이성운입니다.</span>
+        <br />
+        복잡한 문제일수록 단순하고 명쾌한 UI로 풀어내는 것을 즐기며,
+        <br />
+        일상에 작은 영감을 주는 인터랙션을 구현합니다.
       </AnimatedSubtitle>
-      
+
       <AnimatedInteractiveCards ref={cardsRef}>
         <AnimatedRotatingCard $rotation={cardRotations[0]}>
           <CardTitle>Creative Design</CardTitle>
@@ -315,7 +328,8 @@ export default function Home() {
         <AnimatedRotatingCard $rotation={cardRotations[1]}>
           <CardTitle>Performance</CardTitle>
           <CardDescription>
-            최적화된 코드와 빠른 로딩 속도를 제공하는 웹 애플리케이션을 개발합니다
+            최적화된 코드와 빠른 로딩 속도를 제공하는 웹 애플리케이션을
+            개발합니다
           </CardDescription>
         </AnimatedRotatingCard>
 
@@ -329,9 +343,7 @@ export default function Home() {
 
       {/* 타이핑 애니메이션 텍스트 */}
       <TypingContainer>
-        <TypingText>
-          Welcome to my interactive portfolio...
-        </TypingText>
+        <TypingText>Welcome to my interactive portfolio...</TypingText>
       </TypingContainer>
     </PageLayout>
   );

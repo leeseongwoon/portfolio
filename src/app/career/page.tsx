@@ -505,7 +505,7 @@ export default function Career() {
     {
       company: "소프트웨어공작소",
       position: "퍼블리셔, 프론트엔드 개발자",
-      period: "2024. 11 - 2025. 0",
+      period: "2024. 11 - 2025. 06",
       description:
         "다양한 클라이언트와 협업하여 웹 개발 및 유지보수를 담당. TOYOTA 오퍼레이터 대시보드, 콜센터 대시보드 등",
       techStack: ["HTML", "CSS", "JavaScript", "JQuery"],
@@ -541,15 +541,15 @@ export default function Career() {
       position: "웹 개발 학습",
       period: "2023년 10월 - 현재",
       description:
-        "웹 개발의 기초부터 고급 기술까지 학습 중입니다. HTML, CSS, JavaScript 기초부터 시작하여 React, Next.js 등 모던 프론트엔드 기술을 습득했습니다.",
+        "웹 개발에 필요한 언어를 학습 중입니다. HTML, CSS, JavaScript 기초부터 시작하여 React, Next.js 등 모던 프론트엔드 기술을 습득했습니다.",
       techStack: [
         "HTML",
-        "CSS",
-        "JavaScript",
-        "JQuery",
-        "Git",
+        "JavaScript(ES6+, JQuery)",
         "React",
+        "Next.js",
+        "TypeScript",
         "Firebase",
+        "CSS(scss, Module.css, Styled-Components)",
       ],
       gallery: {
         title: "개인 학습 프로젝트",
@@ -559,12 +559,11 @@ export default function Career() {
         images: ["/images/memo-app.png", "/images/webbler.png"],
         techStack: [
           "HTML",
-          "CSS",
+          "CSS(scss, Module.css, Styled-Components)",
           "JavaScript(ES6+, JQuery)",
           "React",
           "Next.js",
           "TypeScript",
-          "Styled-Components",
           "Firebase",
         ],
         links: [
