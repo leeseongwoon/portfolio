@@ -3,6 +3,7 @@
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
 import GalleryModal, { GalleryData } from "@/components/GalleryModal";
+import PageLayout, { PageTitle } from "@/components/PageLayout";
 
 // 애니메이션 키프레임
 const fadeInUp = keyframes`
@@ -76,83 +77,10 @@ const drawLine = keyframes`
   }
 `;
 
-// 스타일 컴포넌트
-const CareerContainer = styled.main`
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  text-align: start;
-  padding: 6rem 2rem;
-  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
-    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
-    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  position: relative;
-  overflow-x: hidden;
-
-  /* 데스크톱에서 더 임팩트 있는 배경 그라데이션 */
-  background: radial-gradient(
-      ellipse 80% 50% at 50% -20%,
-      rgba(56, 189, 248, 0.15),
-      transparent
-    ),
-    radial-gradient(
-      ellipse 60% 80% at 80% 120%,
-      rgba(56, 189, 248, 0.1),
-      transparent
-    );
-
-  @media (max-width: 1024px) {
-    padding: 4rem 1.5rem;
-    background: none;
-  }
-
-  @media (max-width: 767px) {
-    padding: 2rem 1rem;
-    min-height: auto;
-  }
-`;
-
-const Title = styled.h1`
-  font-size: 4.5rem;
-  font-weight: 900;
-  margin-bottom: 3rem;
-  letter-spacing: -3px;
-  background: linear-gradient(135deg, #38bdf8, #0ea5e9, #06b6d4);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+// 커스텀 Title 컴포넌트 (애니메이션 적용)
+const AnimatedTitle = styled(PageTitle)`
   animation: ${fadeInUp} 1s ease-out;
-  position: relative;
   text-align: center;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 6px;
-    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
-    border-radius: 2px;
-    opacity: 1;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: 767px) {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    letter-spacing: -1px;
-  }
 `;
 
 const Timeline = styled.div`
@@ -647,8 +575,8 @@ export default function Career() {
   ];
 
   return (
-    <CareerContainer>
-      <Title>Career</Title>
+    <PageLayout variant="career">
+      <AnimatedTitle>Career</AnimatedTitle>
       <Timeline>
         {careerData.map((item, index) => (
           <TimelineItem
@@ -682,6 +610,6 @@ export default function Career() {
         onClose={closeModal}
         data={selectedGallery}
       />
-    </CareerContainer>
+    </PageLayout>
   );
 }

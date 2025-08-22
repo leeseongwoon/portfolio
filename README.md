@@ -1,61 +1,81 @@
 # 포트폴리오 웹사이트
 
-Next.js와 React를 사용하여 제작된 개인 포트폴리오 웹사이트입니다.
+## 🚀 **실제 이메일 전송 기능 설정**
 
-## 기술 스택
+### **카카오메일 SMTP 설정 방법**
 
-- **프레임워크**: Next.js 15.3.2
-- **언어**: TypeScript
-- **스타일링**: Styled Components
-- **분석 도구**: 
-  - Vercel Analytics
-  - Vercel Speed Insights
+1. **카카오메일 계정 준비**
+   - 카카오메일 계정이 필요합니다
+   - 일반 비밀번호를 사용합니다 (앱 비밀번호 불필요)
 
-## 시작하기
+2. **환경변수 설정**
+   - 프로젝트 루트에 `.env.local` 파일 생성
+   ```bash
+   KAKAO_MAIL_USER=your-email@kakao.com
+   KAKAO_MAIL_PASSWORD=your-kakao-mail-password
+   ```
 
-### 필수 조건
+4. **서버 재시작**
+   ```bash
+   npm run dev
+   ```
 
-- Node.js (최신 LTS 버전 권장)
-- npm
+### **주의사항**
+- `.env.local` 파일은 `.gitignore`에 포함되어 있어야 합니다
+- 카카오메일 계정의 비밀번호를 안전하게 보관하세요
+- SMTP 포트 465는 SSL을 사용합니다
 
-### 설치
+## 🛠️ **기술 스택**
 
-1. 저장소를 클론합니다:
-```bash
-git clone [repository-url]
-cd portfolio
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Styled-Components
+- **Email**: Nodemailer (카카오메일 SMTP)
+- **Deployment**: Vercel
+
+## 📁 **프로젝트 구조**
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API Routes
+│   │   └── send-email/    # 이메일 전송 API
+│   ├── about/             # About 페이지
+│   ├── career/            # Career 페이지
+│   ├── contact/           # Contact 페이지
+│   ├── projects/          # Projects 페이지
+│   └── layout.tsx         # 메인 레이아웃
+├── components/             # 공통 컴포넌트
+│   ├── PageLayout.tsx     # 페이지 레이아웃
+│   ├── ParticleBackground.tsx # 파티클 배경
+│   └── GalleryModal.tsx   # 갤러리 모달
+└── styles/                 # 스타일 파일들
 ```
 
-2. 의존성을 설치합니다:
+## 🚀 **실행 방법**
+
 ```bash
+# 의존성 설치
 npm install
-```
 
-3. 개발 서버를 실행합니다:
-```bash
+# 개발 서버 실행
 npm run dev
+
+# 빌드
+npm run build
+
+# 프로덕션 실행
+npm start
 ```
 
-4. 브라우저에서 [http://localhost:3000](http://localhost:3000)으로 접속하여 확인합니다.
+## ✨ **주요 기능**
 
-## 사용 가능한 스크립트
+- **반응형 디자인**: 모든 디바이스에서 최적화
+- **인터랙티브 홈페이지**: 마우스 추적, 3D 카드 회전
+- **실제 이메일 전송**: Nodemailer를 통한 문의 폼
+- **파티클 배경**: 모든 페이지에서 사용 가능한 애니메이션
+- **갤러리 모달**: 프로젝트 상세 정보 표시
+- **스크롤 기반 애니메이션**: 헤더 숨김/표시, 카드 회전
 
-- `npm run dev`: 개발 서버 실행 (Turbopack 사용)
-- `npm run build`: 프로덕션용 빌드 생성
-- `npm run start`: 프로덕션 모드로 서버 실행
-- `npm run lint`: ESLint를 사용한 코드 검사
+## 📧 **문의하기**
 
-## 프로젝트 구조
-
-```
-portfolio/
-├── src/              # 소스 코드
-├── public/           # 정적 파일
-├── .next/            # Next.js 빌드 파일
-├── node_modules/     # 의존성 패키지
-└── package.json      # 프로젝트 설정 및 의존성
-```
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스 하에 있습니다.
+포트폴리오 웹사이트의 문의 폼을 통해 연락하실 수 있습니다.

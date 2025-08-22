@@ -1,8 +1,6 @@
 'use client';
 
 import {
-  Main,
-  Title,
   CardsContainer,
   ProjectCard,
   CardTitle,
@@ -12,6 +10,7 @@ import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import Image from 'next/image';
 import Head from 'next/head';
+import PageLayout, { PageTitle } from '@/components/PageLayout';
 
 // 애니메이션 키프레임들
 const fadeInUp = keyframes`
@@ -42,7 +41,7 @@ const glow = keyframes`
 `;
 
 // 애니메이션 컴포넌트들
-const AnimatedTitle = styled(Title)`
+const AnimatedTitle = styled(PageTitle)`
   animation: ${fadeInUp} 1s ease-out;
 `;
 
@@ -246,7 +245,7 @@ export default function Projects() {
     : projects.filter(project => project.category === activeCategory);
   
   return (
-    <Main>
+    <PageLayout variant="projects">
       <Head>
         <title>프로젝트 - 이성운 포트폴리오</title>
       </Head>
@@ -289,6 +288,6 @@ export default function Projects() {
           </AnimatedProjectCard>
         ))}
       </AnimatedCardsContainer>
-    </Main>
+    </PageLayout>
   );
 }

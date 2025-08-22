@@ -1,6 +1,6 @@
 "use client";
 
-import { Geist, Geist_Mono  } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import GlobalStyle from "@/styles/GlobalStyle";
 import { ThemeProvider } from "styled-components";
@@ -10,7 +10,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import ParticleBackground from "@/components/ParticleBackground";
 import { useState, useEffect } from "react";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,9 +21,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const NavStyle = styled.nav`
+const HeaderStyle = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 2rem;
   align-items: center;
   padding: 1rem 2rem;
   position: fixed;
@@ -45,35 +45,40 @@ const NavStyle = styled.nav`
   }
 
   @media (max-width: 768px) {
+    justify-content: space-between;
     padding: 0.7rem 1rem;
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   display: flex;
   align-items: center;
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #38bdf8;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #e2e8f0;
   position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    color: #38bdf8;
+    transform: translateY(-2px);
+  }
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 `;
 
-const LogoImage = styled.img`
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-`;
+
 
 const NavText = styled.span`
   width: 100%;
   position: relative;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -5px;
     left: 0;
@@ -201,17 +206,28 @@ function Navbar() {
   }, [lastScrollY]);
 
   return (
-    <NavStyle className={isScrolled ? "scrolled" : ""}>
-      <Logo>
-        <LogoImage src="/images/logo.png" alt="이성운 로고" />
+    <HeaderStyle className={isScrolled ? "scrolled" : ""}>
+      <Logo href="/">
+        이성운
       </Logo>
       <NavLinks>
-        <NavLink href="/"><NavText>About</NavText></NavLink>
-        <NavLink href="/projects"><NavText>Projects</NavText></NavLink>
-        <NavLink href="/career"><NavText>Career</NavText></NavLink>
-        <NavLink href="/contact"><NavText>Contact</NavText></NavLink>
+        <NavLink href="/">
+          <NavText>Home</NavText>
+        </NavLink>
+        <NavLink href="/about">
+          <NavText>About</NavText>
+        </NavLink>
+        <NavLink href="/projects">
+          <NavText>Projects</NavText>
+        </NavLink>
+        <NavLink href="/career">
+          <NavText>Career</NavText>
+        </NavLink>
+        <NavLink href="/contact">
+          <NavText>Contact</NavText>
+        </NavLink>
       </NavLinks>
-    </NavStyle>
+    </HeaderStyle>
   );
 }
 

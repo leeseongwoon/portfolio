@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
-import { Main, Title, Subtitle } from "@/styles/ProjectsStyles";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import styled from "styled-components";
+import PageLayout, { PageTitle, PageSubtitle } from "@/components/PageLayout";
 
 // 스타일 컴포넌트 추가
 const ContentSection = styled.div`
@@ -152,9 +152,9 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
   if (!project) return notFound();
   
   return (
-    <Main>
-      <Title>{project.title}</Title>
-      <Subtitle>{project.desc}</Subtitle>
+    <PageLayout variant="projects">
+      <PageTitle>{project.title}</PageTitle>
+      <PageSubtitle>{project.desc}</PageSubtitle>
       
       <ProjectImageWrapper onClick={() => project.url && window.open(project.url, '_blank')}>
         <Image
@@ -195,6 +195,6 @@ export default function ProjectDetail({ params }: { params: Promise<{ id: string
           </ProjectLink>
         )}
       </ContentSection>
-    </Main>
+    </PageLayout>
   );
 }
