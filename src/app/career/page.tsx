@@ -269,7 +269,7 @@ const TimelineDot = styled.div<{ $delay: number }>`
     width: 18px;
     height: 18px;
     border-width: 3px;
-    top: calc(1.3rem + 6px);
+    top: 9rem;
     transition: transform 0.3s ease;
 
     &:hover {
