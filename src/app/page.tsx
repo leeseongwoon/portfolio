@@ -227,7 +227,7 @@ const AnimatedSubtitle = styled(HomeSubtitle)`
     white-space: nowrap;
     color: #38bdf8;
     border-right: 3px solid #38bdf8;
-    animation: ${typing} 3s steps(20, end), ${blink} 1s step-end infinite;
+    animation: ${typing} 3s steps(15, end), ${blink} 1s step-end infinite;
   }
 `;
 
@@ -316,7 +316,7 @@ export default function Home() {
         <br />
         일상에 작은 영감을 주는 인터랙션을 구현합니다.
       </AnimatedSubtitle>
-
+{/* 
       <AnimatedInteractiveCards ref={cardsRef}>
         <AnimatedRotatingCard $rotation={cardRotations[0]}>
           <CardTitle>Creative Design</CardTitle>
@@ -340,7 +340,7 @@ export default function Home() {
           </CardDescription>
         </AnimatedRotatingCard>
       </AnimatedInteractiveCards>
-
+ */}
       {/* 타이핑 애니메이션 텍스트 */}
       <TypingContainer>
         <TypingText>Welcome to my interactive portfolio...</TypingText>

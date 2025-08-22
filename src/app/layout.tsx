@@ -45,7 +45,7 @@ export default function RootLayout({
         <meta property="og:title" content="이성운 - 웹 개발자 포트폴리오" />
         <meta
           property="og:description"
-          content="React, Next.js, TypeScript를 주로 사용하는 프론트엔드 개발자 이성운의 포트폴리오입니다."
+          content="프론트엔드 개발자 이성운의 포트폴리오입니다."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://your-domain.com" />
