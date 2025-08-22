@@ -23,7 +23,7 @@ const slideUp = keyframes`
     transform: translateY(0) scale(1);
   }
 `;
-
+/* 
 const zoomIn = keyframes`
   from {
     opacity: 0;
@@ -34,7 +34,7 @@ const zoomIn = keyframes`
     transform: scale(1);
   }
 `;
-
+ */
 // 스타일 컴포넌트
 const ModalOverlay = styled.div`
   position: fixed;
@@ -115,11 +115,9 @@ const ProjectTitle = styled.h2`
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  margin-right: 3rem;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
-    margin-right: 2.5rem;
   }
 `;
 
@@ -146,7 +144,7 @@ const ProjectDescription = styled.p`
     margin-bottom: 1.5rem;
   }
 `;
-
+/* 
 const ImageGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -159,7 +157,8 @@ const ImageGrid = styled.div`
     margin-bottom: 1.5rem;
   }
 `;
-
+ */
+/* 
 const ProjectImage = styled.img`
   width: 100%;
   height: 200px;
@@ -184,7 +183,7 @@ const ProjectImage = styled.img`
     height: 160px;
   }
 `;
-
+ */
 const TechStack = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -287,7 +286,7 @@ export default function GalleryModal({ isOpen, onClose, data }: GalleryModalProp
         <ProjectTitle>{data.title}</ProjectTitle>
         <ProjectSubtitle>{data.subtitle}</ProjectSubtitle>
         <ProjectDescription>{data.description}</ProjectDescription>
-
+{/* 
         {data.images && data.images.length > 0 && (
           <ImageGrid>
             {data.images.map((image, index) => (
@@ -300,7 +299,7 @@ export default function GalleryModal({ isOpen, onClose, data }: GalleryModalProp
             ))}
           </ImageGrid>
         )}
-
+ */}
         <TechStack>
           {data.techStack.map((tech, index) => (
             <TechItem key={index}>{tech}</TechItem>

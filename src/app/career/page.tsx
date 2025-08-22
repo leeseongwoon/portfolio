@@ -532,7 +532,7 @@ export default function Career() {
         description:
           "아이스크림미디어의 초등학교 수학 디지털 교과서 컨텐츠를 제작했습니다. 인터랙티브한 학습 경험을 제공하기 위해 애니메이션과 게임 요소를 포함한 교육용 웹 컨텐츠를 개발했습니다.",
         images: ["/images/images.png"],
-        techStack: ["HTML5", "CSS3", "JavaScript", "Canvas API"],
+        techStack: ["HTML5", "CSS3", "JavaScript"],
         links: [],
       },
     },
@@ -558,6 +558,9 @@ export default function Career() {
           "웹 개발 학습 과정에서 만든 다양한 프로젝트들입니다. 메모 앱, 포트폴리오 웹사이트, 그리고 다양한 실습 프로젝트를 통해 프론트엔드 개발 역량을 키워왔습니다.",
         images: ["/images/memo-app.png", "/images/webbler.png"],
         techStack: [
+          "HTML",
+          "CSS",
+          "JavaScript(ES6+, JQuery)",
           "React",
           "Next.js",
           "TypeScript",

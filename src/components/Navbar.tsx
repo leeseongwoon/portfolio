@@ -169,9 +169,11 @@ export default function Navbar() {
         <NavLink href="/">
           <NavText>Home</NavText>
         </NavLink>
+        {/* 
         <NavLink href="/about">
           <NavText>About</NavText>
         </NavLink>
+         */}
         <NavLink href="/projects">
           <NavText>Projects</NavText>
         </NavLink>
