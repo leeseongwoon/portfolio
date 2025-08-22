@@ -343,7 +343,7 @@ export default function Home() {
  */}
       {/* 타이핑 애니메이션 텍스트 */}
       <TypingContainer>
-        <TypingText>Welcome to my interactive portfolio...</TypingText>
+        <TypingText>Welcome to my portfolio...</TypingText>
       </TypingContainer>
     </PageLayout>
   );
