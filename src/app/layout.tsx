@@ -32,11 +32,11 @@ export default function RootLayout({
         <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
         <meta
           name="description"
-          content="React, Next.js, TypeScript를 주로 사용하는 웹 개발자 이성운의 포트폴리오입니다."
+          content="웹 개발자 이성운의 포트폴리오입니다."
         />
         <meta
           name="keywords"
-          content="이성운, 포트폴리오, 프론트엔드, 프론트엔드 개발자, 이성운 포트폴리오, 이성운 프론트엔드, 프론트엔드 포트폴리오, 이성운 웹개발자, 웹개발자, 웹개발자 포트폴리오, 이성운 퍼블리셔, 퍼블리셔, 퍼블리셔 포트폴리오, React, Next.js, TypeScript, 웹 개발자"
+          content="이성운, 포트폴리오, 퍼블리셔, 프론트엔드, 프론트엔드 개발자, 이성운 포트폴리오,이성운 퍼블리셔, 퍼블리셔 포트폴리오, 이성운 프론트엔드, 프론트엔드 포트폴리오, 이성운 웹개발자, 웹개발자, 웹개발자 포트폴리오, 이성운 퍼블리셔, 퍼블리셔, 퍼블리셔 포트폴리오, React, Next.js, TypeScript, 웹 개발자"
         />
         <meta name="author" content="이성운" />
         <meta name="robots" content="index, follow" />
