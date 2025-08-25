@@ -6,7 +6,7 @@ export const SkillsSection = styled.section`
   min-height: 100vh;
   padding: 2rem 0;
   position: relative;
-  overflow: visible;
+  /* overflow 제거 - sticky 작동을 위해 */
   isolation: isolate;
   scroll-margin-top: 100px;
 
@@ -20,7 +20,8 @@ export const SkillsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-
+  /* overflow 제거 - sticky가 작동하도록 */
+  
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -28,13 +29,18 @@ export const SkillsContainer = styled.div`
 
 export const StickyTitleContainer = styled.div`
   position: sticky;
+  position: -webkit-sticky; /* Safari 지원 */
   top: 120px;
   text-align: center;
   height: fit-content;
   width: 300px;
-  z-index: 100;
+  z-index: 10; /* Navbar(100)보다 낮게 설정 */
   float: left;
   margin-right: 4rem;
+  will-change: transform; /* 성능 개선 */
+  
+  /* sticky가 작동하기 위한 추가 설정 */
+  align-self: flex-start;
 
   @media (max-width: 768px) {
     position: static;
