@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   html,
   body {
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: clip; /* overflow-x: hidden은 sticky를 방해할 수 있어 clip으로 변경 */
   }
 
   /* 반응형 미디어 쿼리 */

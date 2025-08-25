@@ -19,7 +19,7 @@ const MainContainer = styled.main<{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  overflow: visible;
+  /* overflow 속성 제거 - sticky 요소가 제대로 작동하도록 */
 
   /* 페이지별 배경 그라데이션 */
   ${(props) => {
