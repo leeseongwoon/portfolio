@@ -16,8 +16,8 @@ export const SkillsSection = styled.section`
 `;
 
 export const SkillsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 300px 1fr;
   gap: 4rem;
   max-width: 1200px;
   width: 100%;
@@ -25,7 +25,7 @@ export const SkillsContainer = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
 `;
@@ -38,9 +38,10 @@ export const StickyTitleContainer = styled.div`
   z-index: 100;
   height: fit-content;
   width: 300px;
-  flex-shrink: 0;
-  align-self: flex-start;
   will-change: position;
+  align-self: start;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   @media (max-width: 768px) {
     position: static;
