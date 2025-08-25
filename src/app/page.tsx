@@ -94,6 +94,8 @@ export default function Home() {
     null
   );
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+
 
   useEffect(() => {
     setIsClient(true);

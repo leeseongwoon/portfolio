@@ -16,38 +16,31 @@ export const SkillsSection = styled.section`
 `;
 
 export const SkillsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 4rem;
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   position: relative;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    padding: 0 1rem;
   }
 `;
 
 export const StickyTitleContainer = styled.div`
-  position: -webkit-sticky;
   position: sticky;
   top: 120px;
   text-align: center;
-  z-index: 100;
   height: fit-content;
   width: 300px;
-  will-change: position;
-  align-self: start;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  z-index: 100;
+  float: left;
+  margin-right: 4rem;
 
   @media (max-width: 768px) {
     position: static;
     width: 100%;
-    margin: 0 auto;
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem auto;
+    float: none;
   }
 `;
 
@@ -77,11 +70,12 @@ export const SkillsCardsContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   animation: ${fadeInUp} 1s ease-out 0.5s both;
-  flex: 1;
   min-height: 150vh;
+  margin-left: 340px;
 
   @media (max-width: 768px) {
     min-height: auto;
+    margin-left: 0;
   }
 `;
 
