@@ -1,46 +1,49 @@
 "use client";
 
-import styled from 'styled-components';
-import { ReactNode } from 'react';
+import styled from "styled-components";
+import { ReactNode } from "react";
 
-const MainContainer = styled.main<{ $variant?: 'home' | 'projects' | 'career' | 'contact' }>`
-  min-height: 100vh;
+const MainContainer = styled.main<{
+  $variant?: "home" | "projects" | "career" | "contact";
+}>`
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 6rem 2rem;
-  padding-top: 8rem; /* Fixed header를 위한 추가 공간 */
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+    Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR",
+    "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 
   /* 페이지별 배경 그라데이션 */
   ${(props) => {
     switch (props.$variant) {
-      case 'home':
+      case "home":
         return `
           background: 
             radial-gradient(ellipse 80% 60% at 50% -20%, rgba(56, 189, 248, 0.2), transparent),
             radial-gradient(ellipse 60% 80% at 20% 120%, rgba(6, 182, 212, 0.15), transparent),
             radial-gradient(ellipse 100% 40% at 80% -10%, rgba(14, 165, 233, 0.1), transparent);
         `;
-      case 'projects':
+      case "projects":
         return `
           background: 
             radial-gradient(ellipse 70% 50% at 30% -10%, rgba(56, 189, 248, 0.15), transparent),
             radial-gradient(ellipse 80% 60% at 70% 110%, rgba(14, 165, 233, 0.1), transparent);
         `;
-      case 'career':
+      case "career":
         return `
           background: 
             radial-gradient(ellipse 80% 60% at 50% -20%, rgba(56, 189, 248, 0.2), transparent),
             radial-gradient(ellipse 60% 80% at 20% 120%, rgba(6, 182, 212, 0.15), transparent);
         `;
-      case 'contact':
+      case "contact":
         return `
           background: 
             radial-gradient(ellipse 60% 80% at 80% -20%, rgba(56, 189, 248, 0.2), transparent),
@@ -53,12 +56,15 @@ const MainContainer = styled.main<{ $variant?: 'home' | 'projects' | 'career' | 
         `;
     }
   }}
-
+/* 
   @media (max-width: 1024px) {
     padding: 4rem 1.5rem;
     padding-top: 6rem;
-    background: 
-      radial-gradient(ellipse 60% 40% at 50% -10%, rgba(56, 189, 248, 0.1), transparent);
+    background: radial-gradient(
+      ellipse 60% 40% at 50% -10%,
+      rgba(56, 189, 248, 0.1),
+      transparent
+    );
   }
 
   @media (max-width: 767px) {
@@ -66,10 +72,12 @@ const MainContainer = styled.main<{ $variant?: 'home' | 'projects' | 'career' | 
     padding-top: 5rem;
     min-height: 80vh;
     background: none;
-  }
+  } */
 `;
 
-const PageTitle = styled.h1<{ $variant?: 'home' | 'projects' | 'career' | 'contact' }>`
+const PageTitle = styled.h1<{
+  $variant?: "home" | "projects" | "career" | "contact";
+}>`
   font-size: 4.5rem;
   font-weight: 900;
   margin-bottom: 2rem;
@@ -83,12 +91,12 @@ const PageTitle = styled.h1<{ $variant?: 'home' | 'projects' | 'career' | 'conta
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
-    width: ${(props) => props.$variant === 'projects' ? '120px' : '100px'};
+    width: ${(props) => (props.$variant === "projects" ? "120px" : "100px")};
     height: 5px;
     background: linear-gradient(90deg, #38bdf8, #0ea5e9);
     border-radius: 2px;
@@ -109,7 +117,9 @@ const PageTitle = styled.h1<{ $variant?: 'home' | 'projects' | 'career' | 'conta
   }
 `;
 
-const PageSubtitle = styled.p<{ $variant?: 'home' | 'projects' | 'career' | 'contact' }>`
+const PageSubtitle = styled.p<{
+  $variant?: "home" | "projects" | "career" | "contact";
+}>`
   font-size: 1.4rem;
   max-width: 800px;
   margin-bottom: 3rem;
@@ -131,17 +141,17 @@ const PageSubtitle = styled.p<{ $variant?: 'home' | 'projects' | 'career' | 'con
 `;
 
 interface PageLayoutProps {
-  variant?: 'home' | 'projects' | 'career' | 'contact';
+  variant?: "home" | "projects" | "career" | "contact";
   title?: string;
   subtitle?: string;
   children: ReactNode;
 }
 
-const PageLayout: React.FC<PageLayoutProps> = ({ 
-  variant = 'home', 
-  title, 
-  subtitle, 
-  children 
+const PageLayout: React.FC<PageLayoutProps> = ({
+  variant = "home",
+  title,
+  subtitle,
+  children,
 }) => {
   return (
     <MainContainer $variant={variant}>

@@ -1,200 +1,207 @@
-"use client";
-import React from "react";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import styled from "styled-components";
-import PageLayout, { PageTitle, PageSubtitle } from "@/components/PageLayout";
+'use client';
 
-// 스타일 컴포넌트 추가
-const ContentSection = styled.div`
-  text-align: left;
-  background: #333;
-  border: 1px solid #444;
-  border-radius: 12px;
+import { useParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Image from 'next/image';
+import PageLayout from '@/components/PageLayout';
+
+// 프로젝트 타입 정의
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  url: string;
+}
+
+const ProjectContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 2rem;
-  margin-top: 2rem;
+`;
+
+const ProjectHeader = styled.div`
+  text-align: center;
+  margin-bottom: 3rem;
+`;
+
+const ProjectTitle = styled.h1`
+  font-size: 3rem;
+  color: #38bdf8;
+  margin-bottom: 1rem;
+`;
+
+const ProjectCategory = styled.span`
+  background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 1rem;
+`;
+
+const ProjectImage = styled.div`
   width: 100%;
-  max-width: 720px;
-  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 `;
 
-const FeatureList = styled.ul`
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
-`;
-
-const FeatureItem = styled.li`
-  margin-bottom: 0.7rem;
+const ProjectDescription = styled.p`
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #e2e8f0;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
 `;
 
 const ProjectLink = styled.a`
   display: inline-block;
-  margin-top: 2rem;
-  padding: 0.8rem 1.5rem;
-  background: #38bdf8;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
   color: white;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 12px;
   text-decoration: none;
-  transition: all 0.2s;
-  
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+
   &:hover {
-    background: #0ea5e9;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3);
   }
 `;
 
-const ProjectImageWrapper = styled.div`
-  width: 100%;
-  max-width: 500px;
-  margin: 2rem 0;
+const BackButton = styled.button`
+  background: transparent;
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s;
-  
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+
   &:hover {
-    transform: scale(1.02);
+    background: #38bdf8;
+    color: white;
+    transform: translateY(-2px);
   }
 `;
 
-const projectDetails: Record<
-  string,
-  { 
-    title: string; 
-    desc: string; 
-    content: string; 
-    image: string;
-    features: string[];
-    tech: string[];
-    url?: string;
+const projects: Project[] = [
+  {
+    id: 'wealthwise',
+    title: 'WealthWise',
+    category: 'React',
+    description: '자산 관리 및 재무 계획을 위한 종합적인 웹 애플리케이션입니다. 사용자가 개인 재무 상황을 파악하고 목표를 설정할 수 있도록 도와주는 직관적인 인터페이스를 제공합니다.',
+    image: 'https://api.microlink.io?url=https://wealthwise-71d31.web.app&screenshot=true&meta=false&embed=screenshot.url',
+    url: 'https://wealthwise-71d31.web.app/'
+  },
+  {
+    id: 'job-counseling-chatbot',
+    title: 'Job Counseling Chatbot',
+    category: 'Next.js',
+    description: 'AI 기반 취업 상담 챗봇 서비스로, 사용자의 경력과 관심사를 바탕으로 맞춤형 취업 조언을 제공합니다. 자연스러운 대화를 통해 진로 상담을 받을 수 있습니다.',
+    image: 'https://api.microlink.io?url=https://job-counseling-chatbot.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    url: 'https://job-counseling-chatbot.vercel.app/'
+  },
+  {
+    id: 'tosspaments-cafe',
+    title: 'Tosspaments Cafe',
+    category: 'Next.js',
+    description: '토스페이먼츠 결제 시스템을 연동한 카페 주문 서비스입니다. 사용자가 온라인으로 메뉴를 선택하고 안전하게 결제할 수 있는 플랫폼을 제공합니다.',
+    image: 'https://api.microlink.io?url=https://tosspaments-cafe.vercel.app&screenshot=true&meta=false&embed=screenshot.url',
+    url: 'https://tosspaments-cafe.vercel.app/'
+  },
+  {
+    id: 'memo-app',
+    title: 'Memo App',
+    category: 'Flutter',
+    description: '실시간 메모 공유 웹 애플리케이션으로, 사용자들이 동시에 메모를 작성하고 편집할 수 있습니다. 협업과 아이디어 공유에 최적화된 플랫폼입니다.',
+    image: '/images/memo-app.png',
+    url: 'https://memo-app-bfad2.web.app/'
+  },
+  {
+    id: 'webbler',
+    title: 'Webbler',
+    category: '기타',
+    description: '전문적인 웹사이트 제작 에이전시의 포트폴리오 사이트입니다. 다양한 웹 개발 서비스와 프로젝트 사례를 소개하는 회사 소개 페이지입니다.',
+    image: '/images/webbler.png',
+    url: 'http://df00.dothome.co.kr/webbler/'
   }
-> = {
-  "wealthwise": {
-    title: "WealthWise(개발중)",
-    desc: "자산 관리 및 재무 계획 웹 애플리케이션",
-    image: "https://api.microlink.io?url=https://wealthwise-71d31.web.app&screenshot=true&meta=false&embed=screenshot.url",
-    features: [
-      "자산 및 부채 관리 대시보드",
-      "예산 계획 및 지출 추적",
-      "재무 목표 설정 및 진행 상황 모니터링",
-      "투자 포트폴리오 분석",
-      "실시간 데이터 시각화"
-    ],
-    tech: ["React", "Firebase", "Redux", "Styled-Components"],
-    content: "WealthWise는 개인 및 가계 자산을 효율적으로 관리할 수 있는 React 기반 웹 애플리케이션입니다. 직관적인 대시보드를 통해 사용자의 자산, 부채, 수입, 지출을 한눈에 파악할 수 있습니다. Firebase를 활용한 실시간 데이터베이스로 정보가 즉시 업데이트되며, 차트 및 그래프를 통해 재무 상태를 시각적으로 분석할 수 있습니다. 예산 계획 기능으로 월간/연간 지출 목표를 설정하고 추적할 수 있으며, 투자 포트폴리오 분석 도구를 통해 투자 성과를 모니터링할 수 있습니다. 모바일 환경에서도 최적화된 반응형 디자인을 제공합니다.",
-    url: "https://wealthwise-71d31.web.app/"
-  },
-  "job-counseling-chatbot": {
-    title: "Job Counseling Chatbot",
-    desc: "AI 기반 취업 상담 챗봇 서비스",
-    image: "https://api.microlink.io?url=https://job-counseling-chatbot.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
-    features: [
-      "선택 기반 Q&A 시스템",
-      "단계별 대화 흐름 구현",
-      "간편한 네비게이션",
-      "직관적인 채팅 UI",
-      "관리자 페이지",
-      "RESTful API 서버"
-    ],
-    tech: ["Next.js 15", "React", "TypeScript", "Styled-Components"],
-    content: "Next.js와 React를 기반으로 구축된 웹 기반 취업 상담 챗봇 애플리케이션입니다. 사용자는 미리 정의된 질문 옵션을 선택하여 취업, 학습, 진로 관련 정보를 얻을 수 있습니다. 선택 기반 Q&A 시스템, 단계별 대화 흐름, 간편한 네비게이션, 직관적인 채팅 UI, 관리자 페이지, RESTful API 서버 등 다양한 기능을 포함합니다. 스타일 컴포넌트를 분리하여 코드 가독성과 유지보수성을 향상했습니다.",
-    url: "https://job-counseling-chatbot.vercel.app/"
-  },
-  "tosspaments-cafe": {
-    title: "Tosspaments Cafe",
-    desc: "토스페이먼츠 결제 연동 카페 주문 서비스",
-    image: "https://api.microlink.io?url=https://tosspaments-cafe.vercel.app&screenshot=true&meta=false&embed=screenshot.url",
-    features: [
-      "메뉴 탐색 및 카테고리별 분류",
-      "장바구니 기능 및 수량 관리",
-      "토스페이먼츠 SDK 결제 시스템",
-      "오프라인 대응 및 상태 감지",
-      "모바일 최적화 반응형 디자인"
-    ],
-    tech: ["Next.js 15", "React 19", "TypeScript", "토스페이먼츠 API"],
-    content: "Next.js 15와 토스페이먼츠 결제 API를 활용한 모바일 최적화 카페 주문 애플리케이션입니다. 사용자는 메뉴를 카테고리별로 탐색하고, 장바구니에 상품을 추가한 후 토스페이먼츠를 통해 간편하게 결제할 수 있습니다. 모바일 환경에 최적화된 반응형 디자인을 적용했으며, 터치 친화적 인터페이스로 직관적인 사용이 가능합니다. 네트워크 연결 상태 감지 및 재연결 시 자동 처리 기능도 구현되어 있어 사용자 경험을 향상시켰습니다. React Hooks와 LocalStorage를 활용한 상태 관리 시스템을 갖추고 있습니다.",
-    url: "https://tosspaments-cafe.vercel.app/"
-  },
-  "memo-app": {
-    title: "Memo App",
-    desc: "Flutter 기반 메모 관리 애플리케이션",
-    image: "/images/memo-app.png",
-    features: [
-      "메모 생성, 수정, 삭제 기능",
-      "폴더 생성 및 관리",
-      "메모 폴더 간 이동",
-      "메모 색상 변경",
-      "메모 검색 및 자동 저장"
-    ],
-    tech: ["Flutter", "Dart", "SQLite", "Provider", "Flutter Staggered Grid View"],
-    content: "아기자기한 UI를 가진 Flutter 기반 메모 애플리케이션입니다. 메모를 폴더별로 관리하고, 색상 변경과 검색 기능을 제공합니다. SQLite 데이터베이스를 활용해 메모와 폴더 데이터를 로컬에 저장하며, Provider 패턴으로 상태 관리를 구현했습니다. 메모 생성, 수정, 삭제 기능 외에도 폴더 관리, 메모 색상 변경, 검색, 자동 저장 기능을 제공합니다. Flutter의 Staggered Grid View를 활용해 다양한 크기의 메모 카드를 표시하며, 메모 내용에 따라 동적으로 카드 크기가 조절됩니다. 날짜 포맷 유틸리티를 통해 상대적 시간 표시(오늘, 어제, n일 전 등)를 제공합니다.",
-    url: "https://memo-app-bfad2.web.app/"
-  },
-  "webbler": {
-    title: "Webbler",
-    desc: "전문적인 웹사이트 제작 에이전시",
-    image: "/images/webbler.png",
-    features: [
-      "다양한 웹디자인 템플릿 제공 (200+)",
-      "맞춤형 UI 위젯 (100+)",
-      "기획부터 디자인, 개발까지 통합 서비스",
-      "5단계 웹사이트 제작 프로세스",
-      "전략적 콘텐츠 설계 및 UI 구현"
-    ],
-    tech: ["HTML5/CSS3", "JavaScript", "PHP", "UI/UX 디자인"],
-    content: "  webbler는 '싸고, 빠르고, 아름답게' 웹사이트를 제작하는 디지털 에이전시입니다. 200개 이상의 웹디자인 템플릿과 100개 이상의 맞춤 UI 위젯을 보유하고 있으며, 기획부터 디자인, 개발까지 5단계 과정을 통해 전문적인 웹사이트를 제작합니다. webbler는 단순히 노코드 툴이 아닌, 목적에 맞게 콘텐츠를 전략적으로 설계하고 편리한 사용성을 고려하여 웹사이트를 개발하는 전문 에이전시입니다. 기본 제작 비용은 200만원부터 시작하며, 기획자, 디자이너, 개발자가 의뢰인과 함께 소통하며 웹사이트를 만드는 서비스를 제공합니다.",
-    url: "http://df00.dothome.co.kr/webbler/"
-  },
-};
+];
 
-export default function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = React.use(params);
-  const project = projectDetails[id];
-  
-  if (!project) return notFound();
-  
+export default function ProjectDetail() {
+  const params = useParams();
+  const [project, setProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    const projectId = params.id as string;
+    const foundProject = projects.find(p => p.id === projectId);
+    if (foundProject) {
+      setProject(foundProject);
+    } else {
+      setProject(null);
+    }
+  }, [params.id]);
+
+  const goBack = () => {
+    window.history.back();
+  };
+
+  if (!project) {
+    return (
+      <PageLayout variant="projects">
+        <ProjectContainer>
+          <ProjectHeader>
+            <ProjectTitle>프로젝트를 찾을 수 없습니다</ProjectTitle>
+            <BackButton onClick={goBack}>뒤로 가기</BackButton>
+          </ProjectHeader>
+        </ProjectContainer>
+      </PageLayout>
+    );
+  }
+
   return (
     <PageLayout variant="projects">
-      <PageTitle>{project.title}</PageTitle>
-      <PageSubtitle>{project.desc}</PageSubtitle>
-      
-      <ProjectImageWrapper onClick={() => project.url && window.open(project.url, '_blank')}>
-        <Image
-          src={project.image}
-          alt={project.title}
-          width={500}
-          height={300}
-          priority
-          style={{
-            width: '100%',
-            height: 'auto',
-            borderRadius: '12px',
-          }}
-        />
-      </ProjectImageWrapper>
-      
-      <ContentSection>
-        <h3>프로젝트 소개</h3>
-        <p style={{marginBottom:'1rem', textIndent: '0.5em'}}>{project.content}</p>
-        
-        <h3>주요 기능</h3>
-        <FeatureList>
-          {project.features.map((feature, index) => (
-            <FeatureItem key={index}>{feature}</FeatureItem>
-          ))}
-        </FeatureList>
-        
-        <h3>사용 기술</h3>
-        <FeatureList>
-          {project.tech.map((tech, index) => (
-            <FeatureItem key={index}>{tech}</FeatureItem>
-          ))}
-        </FeatureList>
-        
-        {project.url && (
+      <ProjectContainer>
+        <ProjectHeader>
+          <ProjectTitle>{project.title}</ProjectTitle>
+          <ProjectCategory>{project.category}</ProjectCategory>
+        </ProjectHeader>
+
+        <ProjectImage>
+          <Image
+            src={project.image}
+            alt={project.title}
+            width={800}
+            height={400}
+            style={{
+              width: '100%',
+              height: 'auto',
+              objectFit: 'cover'
+            }}
+          />
+        </ProjectImage>
+
+        <ProjectDescription>{project.description}</ProjectDescription>
+
+        <div style={{ textAlign: 'center' }}>
           <ProjectLink href={project.url} target="_blank" rel="noopener noreferrer">
             프로젝트 보러가기 →
           </ProjectLink>
-        )}
-      </ContentSection>
+        </div>
+
+        <div style={{ textAlign: 'center' }}>
+          <BackButton onClick={goBack}>뒤로 가기</BackButton>
+        </div>
+      </ProjectContainer>
     </PageLayout>
   );
 }

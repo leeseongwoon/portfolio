@@ -32,7 +32,7 @@ export default function RootLayout({
         <title>이성운 - 프론트엔드 개발자 포트폴리오</title>
         <meta
           name="description"
-          content="웹 개발자 이성운의 포트폴리오입니다."
+          content="웹개발자 이성운의 포트폴리오입니다."
         />
         <meta
           name="keywords"
@@ -62,7 +62,7 @@ export default function RootLayout({
         />
         <meta
           name="twitter:description"
-          content="React, Next.js, TypeScript를 주로 사용하는 프론트엔드 개발자 이성운의 포트폴리오입니다."
+          content="웹개발자 이성운의 포트폴리오입니다."
         />
 
         {/* 추가 SEO 태그 */}

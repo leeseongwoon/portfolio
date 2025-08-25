@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
@@ -17,11 +16,6 @@ const HeaderStyle = styled.header`
   z-index: 100;
   transition: all 0.3s ease;
   transform: translateY(0);
-
-  /* 스크롤 시 자연스럽게 사라짐 */
-  &.scrolled {
-    transform: translateY(-100%);
-  }
 
   @media (max-width: 1024px) {
     padding: 0.8rem 1.5rem;
@@ -61,7 +55,7 @@ const NavLinks = styled.nav`
   }
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled.button`
   text-decoration: none;
   color: #e2e8f0;
   padding: 0.8rem 1.2rem;
@@ -73,6 +67,9 @@ const NavLink = styled(Link)`
   overflow: hidden;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
 
   /* 독특한 호버 효과 */
   &::before {
@@ -134,26 +131,24 @@ const NavLink = styled(Link)`
 `;
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 100) {
-        if (currentScrollY > lastScrollY) {
-          // 아래로 스크롤
-          setIsScrolled(true);
-        } else {
-          // 위로 스크롤
-          setIsScrolled(false);
+      // 현재 활성 섹션 감지
+      const sections = ['home', 'skills', 'projects', 'career', 'contact'];
+      const currentSection = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
         }
-      } else {
-        setIsScrolled(false);
+        return false;
+      });
+      
+      if (currentSection) {
+        setActiveSection(currentSection);
       }
-
-      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -161,26 +156,49 @@ export default function Navbar() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [lastScrollY]);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
-    <HeaderStyle className={isScrolled ? "scrolled" : ""}>
+    <HeaderStyle>
       <NavLinks>
-        <NavLink href="/">
+        <NavLink 
+          onClick={() => scrollToSection('home')}
+          className={activeSection === 'home' ? 'active' : ''}
+        >
           <NavText>Home</NavText>
         </NavLink>
-        {/* 
-        <NavLink href="/about">
-          <NavText>About</NavText>
+        <NavLink 
+          onClick={() => scrollToSection('skills')}
+          className={activeSection === 'skills' ? 'active' : ''}
+        >
+          <NavText>Skills</NavText>
         </NavLink>
-         */}
-        <NavLink href="/projects">
+        <NavLink 
+          onClick={() => scrollToSection('projects')}
+          className={activeSection === 'projects' ? 'active' : ''}
+        >
           <NavText>Projects</NavText>
         </NavLink>
-        <NavLink href="/career">
+        <NavLink 
+          onClick={() => scrollToSection('career')}
+          className={activeSection === 'career' ? 'active' : ''}
+        >
           <NavText>Career</NavText>
         </NavLink>
-        <NavLink href="/contact">
+        <NavLink 
+          onClick={() => scrollToSection('contact')}
+          className={activeSection === 'contact' ? 'active' : ''}
+        >
           <NavText>Contact</NavText>
         </NavLink>
       </NavLinks>
