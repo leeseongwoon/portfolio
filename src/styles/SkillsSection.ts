@@ -23,7 +23,6 @@ export const SkillsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  transform: translateZ(0);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -32,6 +31,7 @@ export const SkillsContainer = styled.div`
 `;
 
 export const StickyTitleContainer = styled.div`
+  position: -webkit-sticky;
   position: sticky;
   top: 120px;
   text-align: center;
@@ -40,6 +40,7 @@ export const StickyTitleContainer = styled.div`
   width: 300px;
   flex-shrink: 0;
   align-self: flex-start;
+  will-change: position;
 
   @media (max-width: 768px) {
     position: static;
