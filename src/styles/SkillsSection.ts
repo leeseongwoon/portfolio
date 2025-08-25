@@ -40,8 +40,6 @@ export const StickyTitleContainer = styled.div`
   width: 300px;
   flex-shrink: 0;
   align-self: flex-start;
-  will-change: transform;
-  transform: translateZ(0);
 
   @media (max-width: 768px) {
     position: static;
