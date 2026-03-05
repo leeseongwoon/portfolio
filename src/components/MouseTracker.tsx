@@ -18,7 +18,7 @@ const MouseTrackerElement = styled.div<{ $x: number; $y: number }>`
   z-index: 9999;
   left: ${(props) => props.$x - 15}px;
   top: ${(props) => props.$y - 15}px;
-  transition: all 0.15s ease;
+  transition: none;
   mix-blend-mode: screen;
   filter: blur(1px);
 `;

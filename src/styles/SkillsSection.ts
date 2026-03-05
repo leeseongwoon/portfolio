@@ -20,8 +20,7 @@ export const SkillsContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  /* overflow 제거 - sticky가 작동하도록 */
-  
+
   @media (max-width: 768px) {
     padding: 0 1rem;
   }
@@ -82,6 +81,7 @@ export const SkillsCardsContainer = styled.div`
   @media (max-width: 768px) {
     min-height: auto;
     margin-left: 0;
+    width: 90%;
   }
 `;
 

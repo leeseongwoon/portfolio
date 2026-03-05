@@ -72,8 +72,6 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error('이메일 전송 오류:', error);
-    
     // 더 자세한 오류 정보 제공
     let errorMessage = '이메일 전송에 실패했습니다.';
     

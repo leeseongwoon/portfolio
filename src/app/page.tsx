@@ -13,14 +13,20 @@ import {
   GlobalAnimationStyles,
   Section,
   SectionSubtitle,
-  AnimatedSubtitle,
   AnimatedTitle,
 } from "../styles/CommonStyles";
 
 import {
   HomeSection,
+  RoleBadges,
+  RoleBadge,
+  HeroTitle,
+  HeroSubtitle,
+  TechStack,
+  TechTag,
+  CodeBlock,
+  CodeLine,
   TypingText,
-  TypingContainer,
 } from "../styles/HomeSection";
 
 import {
@@ -138,10 +144,9 @@ export default function Home() {
       } else {
         alert(`오류: ${result.error}`);
       }
-    } catch (error) {
-      console.error("이메일 전송 오류:", error);
+    } catch {
       alert("이메일 전송에 실패했습니다. 잠시 후 다시 시도해주세요.");
-    } finally {
+    } finally { 
       setIsSubmitting(false);
     }
   };
@@ -218,7 +223,7 @@ export default function Home() {
         description:
           "TOYOTA 오퍼레이터 대시보드와 콜센터 대시보드 개발을 담당했습니다.",
         images: ["/images/images.png", "/images/webbler.png"],
-        techStack: ["HTML5", "CSS3", "JavaScript ES6+", "jQuery"],
+        techStack: ["HTML5", "CSS3", "JavaScript", "jQuery"],
         links: [],
       },
     },
@@ -228,14 +233,14 @@ export default function Home() {
       period: "2024. 06 - 2024. 08",
       description:
         "[AIDT] 아이스크림미디어의 초등학교 영어, 수학 디지털 교과서 컨텐츠 제작",
-      techStack: ["HTML", "CSS", "JavaScript"],
+      techStack: ["HTML", "CSS", "JavaScript", "JQuery"],
       gallery: {
         title: "프리아이브",
         subtitle: "AIDT 디지털 교과서 컨텐츠 제작",
         description:
           "아이스크림미디어의 초등학교 수학 디지털 교과서 컨텐츠를 제작했습니다.",
         images: ["/images/images.png"],
-        techStack: ["HTML5", "CSS3", "JavaScript"],
+        techStack: ["HTML5", "CSS3", "JavaScript", "JQuery"],
         links: [],
       },
     },
@@ -289,19 +294,45 @@ export default function Home() {
 
       {/* Home 섹션 */}
       <HomeSection id="home">
-          <AnimatedSubtitle>
-            사용자의 즐거운 경험을 설계하는
-            <span>웹 개발자 이성운입니다.</span>
-            <br />
-            복잡한 문제일수록 단순하고 명쾌한 UI로 풀어내는 것을 즐기며,
-            <br />
-            일상에 작은 영감을 주는 인터랙션을 구현합니다.
-          </AnimatedSubtitle>
+        <RoleBadges>
+          <RoleBadge>퍼블리셔</RoleBadge>
+          <RoleBadge>프론트엔드 개발자</RoleBadge>
+        </RoleBadges>
 
-          {/* 타이핑 애니메이션 텍스트 */}
-          <TypingContainer>
-            <TypingText>Welcome to my portfolio...</TypingText>
-          </TypingContainer>
+        <HeroTitle>
+          안녕하세요, <span>이성운</span>입니다.
+        </HeroTitle>
+
+        <HeroSubtitle>
+          사용자의 즐거운 경험을 설계합니다.
+          <br />
+          시맨틱한 마크업과 반응형 퍼블리싱부터 React, Next.js까지.
+        </HeroSubtitle>
+
+        <TechStack>
+          {["HTML", "CSS", "SCSS", "JavaScript", "React", "Next.js", "TypeScript", "Styled-Components"].map(
+            (tech) => (
+              <TechTag key={tech}>{tech}</TechTag>
+            )
+          )}
+        </TechStack>
+
+        <CodeBlock>
+          <CodeLine>
+            <span className="keyword">const</span> developer = <span className="string">{"{"}</span>
+          </CodeLine>
+          <CodeLine>
+            &nbsp;&nbsp;role: <span className="string">{'"퍼블리셔 & 프론트엔드"'}</span>,
+          </CodeLine>
+          <CodeLine>
+            &nbsp;&nbsp;focus: <span className="string">{'"UX · 반응형 · 인터랙션"'}</span>
+          </CodeLine>
+          <CodeLine>
+            <span className="string">{"}"}</span>;
+          </CodeLine>
+        </CodeBlock>
+
+        <TypingText>{`// 포트폴리오를 둘러보세요`}</TypingText>
       </HomeSection>
 
       {/* Skills 섹션 */}
