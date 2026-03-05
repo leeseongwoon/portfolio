@@ -3,20 +3,19 @@ import { fadeInUp } from "./CommonStyles";
 
 //section
 export const HomeSection = styled.section`
-  min-height: 100vh;
+  height: 100vh;
   margin-bottom: 4rem;
-  padding-top: 10rem;
-  padding-bottom: 4rem;
+  padding-top: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 
   @media (max-width: 768px) {
-    padding-top: 11rem;
+    padding-top: 6rem;
     padding-bottom: 3rem;
-    gap: 1.5rem;
+    gap: 3rem;
   }
 `;
 
@@ -26,7 +25,6 @@ export const RoleBadges = styled.div`
   gap: 0.75rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 0.5rem;
   animation: ${fadeInUp} 0.8s ease-out 0.2s both;
 `;
 
@@ -66,7 +64,7 @@ export const HeroTitle = styled.h1`
   }
 
   @media (max-width: 768px) {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
   }
 `;
 
@@ -91,7 +89,6 @@ export const TechStack = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  margin-top: 1rem;
   animation: ${fadeInUp} 0.8s ease-out 0.9s both;
 `;
 
@@ -125,7 +122,6 @@ const codeGlow = keyframes`
 `;
 
 export const CodeBlock = styled.div`
-  margin-top: 2rem;
   padding: 1.25rem 1.75rem;
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(71, 85, 105, 0.5);
@@ -164,7 +160,6 @@ export const TypingText = styled.p`
   font-size: 1rem;
   color: #38bdf8;
   font-weight: 500;
-  margin-top: 2rem;
   overflow: hidden;
   white-space: nowrap;
   animation: ${fadeInUp} 1s ease-out 1.4s both;
